@@ -56,6 +56,7 @@ export let matchData = $state({
 			groundIntake: 0,
 			processor: 0,
 			net: 0,
+			dropped: 0,
 		},
 	},
 	teleop: {
@@ -66,6 +67,7 @@ export let matchData = $state({
 			l2: 0,
 			l3: 0,
 			l4: 0,
+			dropped: 0,
 		},
 		algae: {
 			reefDescoreDrop: 0,
@@ -73,6 +75,7 @@ export let matchData = $state({
 			groundIntake: 0,
 			processor: 0,
 			net: 0,
+			dropped: 0,
 		},
 	},
 	endgame: {
