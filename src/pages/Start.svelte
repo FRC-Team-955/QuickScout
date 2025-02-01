@@ -2,7 +2,8 @@
 	import { scouterInfo, updateScouterInfo, matchState } from "../state.svelte";
 </script>
 
-<h1>QuickScout</h1>
+<h1 style="margin-block-end: 0">QuickScout</h1>
+<h3 style="margin-block-start: 0">Made by FRC Teams 749, 955, 997</h3>
 
 <label>
 	First initial: <input
@@ -28,4 +29,5 @@
 </label>
 <br />
 
+<br />
 <button onclick={() => (matchState.started = true)} disabled={scouterInfo.firstInitial.length == 0 || scouterInfo.lastInitial.length == 0}>Start match</button>
