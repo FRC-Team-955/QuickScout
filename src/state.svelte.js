@@ -1,7 +1,20 @@
+const firstInitialKey = "firstInitial";
+const lastInitialKey = "lastInitial";
+
 export let scouterInfo = $state({
-	firstInitial: "",
-	lastInitial: "",
+	firstInitial: localStorage.getItem(firstInitialKey) || "",
+	lastInitial: localStorage.getItem(lastInitialKey) || "",
 });
+
+export function updateScouterInfo() {
+	localStorage.setItem(firstInitialKey, scouterInfo.firstInitial);
+	localStorage.setItem(lastInitialKey, scouterInfo.lastInitial);
+}
+
+export function endStartScreen() {
+	updateScouterInfo();
+	matchState.started = true;
+}
 
 export let matchState = $state({
 	started: false,
