@@ -11,11 +11,6 @@ export function updateScouterInfo() {
 	localStorage.setItem(lastInitialKey, scouterInfo.lastInitial);
 }
 
-export function endStartScreen() {
-	updateScouterInfo();
-	matchState.started = true;
-}
-
 export let matchState = $state({
 	started: false,
 	metadataEntered: false,
@@ -94,17 +89,3 @@ export let scoringState = $state({
 	hasCoral: false,
 	hasAlgae: false,
 });
-
-export function resetMatchData() {
-	// matchData.started = false;
-	// matchData.metadata = {
-	// 	entered: false,
-	// 	matchNumber: null,
-	// 	teamNumber: null,
-	// };
-	// matchData.prematch = {
-	// 	entered: false,
-	// 	noShow: false,
-	// 	startingLocation: null,
-	// };
-}
