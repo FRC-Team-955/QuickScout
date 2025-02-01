@@ -2,9 +2,9 @@
 	import Match from "./pages/Match.svelte";
 	import Start from "./pages/Start.svelte";
 
-	import { scouterInfo, matchData, matchState } from "./state.svelte";
+	import { scouterInfo, matchData, matchState, scoringState } from "./state.svelte";
 
-	$inspect(scouterInfo, matchData);
+	$inspect(scouterInfo, matchData, matchState, scoringState);
 </script>
 
 <main>
