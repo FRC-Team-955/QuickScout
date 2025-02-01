@@ -1,8 +1,11 @@
 <script>
-	import { scouterInfo, updateScouterInfo, matchState } from "../state.svelte";
+	import { scouterInfo, updateScouterInfo, uiState } from "../state.svelte";
 </script>
 
 <h1>QuickScout</h1>
+
+<button onclick={() => (uiState.settingsOpen = true)}>Settings</button>
+<br />
 
 <label>
 	First initial: <input
@@ -28,4 +31,4 @@
 </label>
 <br />
 
-<button onclick={() => (matchState.started = true)} disabled={scouterInfo.firstInitial.length == 0 || scouterInfo.lastInitial.length == 0}>Start match</button>
+<button onclick={() => (uiState.matchStarted = true)} disabled={scouterInfo.firstInitial.length == 0 || scouterInfo.lastInitial.length == 0}>Start match</button>

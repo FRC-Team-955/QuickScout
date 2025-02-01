@@ -1,7 +1,7 @@
 <script>
 	import { toSVGString } from "../third-party/node-qrcode/lib/browser";
 
-	import { scouterInfo, matchData, matchState } from "../state.svelte";
+	import { scouterInfo, matchData, uiState } from "../state.svelte";
 
 	const STATES = Object.freeze({
 		NOT_CHOSEN: 0,
@@ -56,6 +56,6 @@
 	<button onclick={() => (state = STATES.CHOSE_QRCODE)}>Export via QR code</button>
 	<br />
 	<br />
-	<button onclick={() => (matchState.postmatchEntered = false)}>Previous (Postmatch)</button>
+	<button onclick={() => (uiState.postmatchEntered = false)}>Previous (Postmatch)</button>
 	<button class="danger" onclick={() => location.reload()}>New match (ALL DATA WILL BE RESET!)</button>
 {/if}

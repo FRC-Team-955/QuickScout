@@ -11,8 +11,9 @@ export function updateScouterInfo() {
 	localStorage.setItem(lastInitialKey, scouterInfo.lastInitial);
 }
 
-export let matchState = $state({
-	started: false,
+export let uiState = $state({
+	settingsOpen: false,
+	matchStarted: false,
 	metadataEntered: false,
 	prematchEntered: false,
 	autonomousEntered: false,

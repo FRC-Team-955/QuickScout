@@ -1,5 +1,5 @@
 <script>
-	import { matchData, matchState } from "../../state.svelte";
+	import { matchData, uiState } from "../../state.svelte";
 
 	import startingPositionRed from "../../assets/starting-position-red.png";
 	import startingPositionBlue from "../../assets/starting-position-blue.png";
@@ -25,8 +25,8 @@
 {/if}
 
 <br />
-<button onclick={() => (matchState.metadataEntered = false)}>Previous (Metadata)</button>
-<button onclick={() => (matchState.prematchEntered = true)} disabled={matchData.prematch.startingLocation == null && !matchData.prematch.noShow}>Next (Autonomous)</button>
+<button onclick={() => (uiState.metadataEntered = false)}>Previous (Metadata)</button>
+<button onclick={() => (uiState.prematchEntered = true)} disabled={matchData.prematch.startingLocation == null && !matchData.prematch.noShow}>Next (Autonomous)</button>
 
 <style>
 	img {

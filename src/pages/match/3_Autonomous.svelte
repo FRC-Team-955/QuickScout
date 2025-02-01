@@ -1,7 +1,7 @@
 <script>
 	import Scoring from "./Scoring.svelte";
 
-	import { matchData, matchState } from "../../state.svelte";
+	import { matchData, uiState } from "../../state.svelte";
 </script>
 
 <h2>Autonomous</h2>
@@ -13,5 +13,5 @@
 <br />
 
 <br />
-<button onclick={() => (matchState.prematchEntered = false)}>Previous (Pregame)</button>
-<button onclick={() => (matchState.autonomousEntered = true)}>Next (Teleop)</button>
+<button onclick={() => (uiState.prematchEntered = false)}>Previous (Pregame)</button>
+<button onclick={() => (uiState.autonomousEntered = true)}>Next (Teleop)</button>
