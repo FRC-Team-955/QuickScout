@@ -15,4 +15,4 @@
 
 <br />
 <button onclick={() => (matchState.endgameEntered = false)}>Previous (Endgame)</button>
-<button onclick={() => (matchState.postmatchEntered = true)}>Finish match</button>
+<button onclick={() => (matchState.postmatchEntered = true)}>Finish</button>

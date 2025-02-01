@@ -76,6 +76,10 @@ label > select {
 	margin-left: 0px;
 }
 
+button.danger {
+	background-color: rgb(255, 90, 90);
+}
+
 @media (prefers-color-scheme: light) {
 	:root {
 		color: #213547;

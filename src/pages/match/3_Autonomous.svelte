@@ -6,7 +6,7 @@
 
 <h2>Autonomous</h2>
 
-<label>Leave starting line: <input bind:checked={matchData.autonomous.leave} type="checkbox" /></label>
+<label>Left starting line: <input bind:checked={matchData.autonomous.leave} type="checkbox" /></label>
 <br />
 
 <Scoring isAutonomous={true} />
