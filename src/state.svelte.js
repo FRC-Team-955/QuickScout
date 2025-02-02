@@ -1,13 +1,13 @@
-const firstInitialKey = "firstInitial";
+const firstNameKey = "firstName";
 const lastInitialKey = "lastInitial";
 
 export let scouterInfo = $state({
-	firstInitial: localStorage.getItem(firstInitialKey) || "",
+	firstName: localStorage.getItem(firstNameKey) || "",
 	lastInitial: localStorage.getItem(lastInitialKey) || "",
 });
 
 export function updateScouterInfo() {
-	localStorage.setItem(firstInitialKey, scouterInfo.firstInitial);
+	localStorage.setItem(firstNameKey, scouterInfo.firstName);
 	localStorage.setItem(lastInitialKey, scouterInfo.lastInitial);
 }
 
@@ -17,13 +17,13 @@ export let appState = $state({
 	/** @type {"start" | "settings"} */
 	homeState: "start",
 	/** @type {"metadata" | "prematch" | "autonomous" | "teleop" | "endgame" | "postmatch" | "export"} */
-	matchState: "prematch"
+	matchState: "metadata"
 })
 
 export function uiState(state) {
 	appState.uiState = state;
 	appState.homeState = "start";
-	appState.matchState = "prematch"
+	appState.matchState = "metadata"
 }
 
 export let matchData = $state({

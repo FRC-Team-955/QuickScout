@@ -2,6 +2,7 @@
 	import { toSVGString } from "../../third-party/node-qrcode/lib/browser";
 
 	import { scouterInfo, matchData, appState } from "../../state.svelte";
+    import ReturnToHome from "../../assets/ReturnToHome.svelte";
 
 	const EXPORTSTATES = Object.freeze({
 		NOT_CHOSEN: 0,
@@ -39,23 +40,27 @@
 	});
 </script>
 
-<h2>Export match</h2>
+<ReturnToHome />
 
-{#if exportState == EXPORTSTATES.CHOSE_QRCODE}
-	{@html svg}
-	<br />
-	<br />
-	<button onclick={() => (exportState = EXPORTSTATES.NOT_CHOSEN)}>Back</button>
-{:else if exportState == EXPORTSTATES.CHOSE_ONLINE}
-	<p>Sorry, not supported yet</p>
-	<br />
-	<button onclick={() => (exportState = EXPORTSTATES.NOT_CHOSEN)}>Back</button>
-{:else}
-	<button onclick={() => (exportState = EXPORTSTATES.CHOSE_ONLINE)}>Export via the internet</button>
-	<br />
-	<button onclick={() => (exportState = EXPORTSTATES.CHOSE_QRCODE)}>Export via QR code</button>
-	<br />
-	<br />
-	<button onclick={() => (appState.matchState = "postmatch")}>Previous (Postmatch)</button>
-	<button class="danger" onclick={() => location.reload()}>New match (ALL DATA WILL BE RESET!)</button>
-{/if}
+<div class="main">
+	<h2>Export match</h2>
+
+	{#if exportState == EXPORTSTATES.CHOSE_QRCODE}
+		{@html svg}
+		<br />
+		<br />
+		<button onclick={() => (exportState = EXPORTSTATES.NOT_CHOSEN)}>Back</button>
+	{:else if exportState == EXPORTSTATES.CHOSE_ONLINE}
+		<p>Sorry, not supported yet</p>
+		<br />
+		<button onclick={() => (exportState = EXPORTSTATES.NOT_CHOSEN)}>Back</button>
+	{:else}
+		<button onclick={() => (exportState = EXPORTSTATES.CHOSE_ONLINE)}>Export via the internet</button>
+		<br />
+		<button onclick={() => (exportState = EXPORTSTATES.CHOSE_QRCODE)}>Export via QR code</button>
+		<br />
+		<br />
+		<button onclick={() => (appState.matchState = "postmatch")}>Previous (Postmatch)</button>
+		<button class="danger" onclick={() => location.reload()}>New match (ALL DATA WILL BE RESET!)</button>
+	{/if}
+</div>

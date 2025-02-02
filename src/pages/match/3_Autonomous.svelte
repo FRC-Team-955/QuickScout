@@ -2,16 +2,21 @@
 	import Scoring from "./Scoring.svelte";
 
 	import { matchData, appState } from "../../state.svelte";
+    import ReturnToHome from "../../assets/ReturnToHome.svelte";
 </script>
 
-<h2>Autonomous</h2>
+<ReturnToHome />
 
-<label>Left starting line: <input bind:checked={matchData.autonomous.leave} type="checkbox" /></label>
-<br />
+<div class="main">
+	<h2>Autonomous</h2>
 
-<Scoring isAutonomous={true} />
-<br />
+	<label>Left starting line: <input bind:checked={matchData.autonomous.leave} type="checkbox" /></label>
+	<br />
 
-<br />
-<button onclick={() => (appState.matchState = "prematch")}>Previous (Prematch)</button>
-<button onclick={() => (appState.matchState = "teleop")}>Next (Teleop)</button>
+	<Scoring isAutonomous={true} />
+	<br />
+
+	<br />
+	<button onclick={() => (appState.matchState = "prematch")}>Previous (Prematch)</button>
+	<button onclick={() => (appState.matchState = "teleop")}>Next (Teleop)</button>
+</div>
