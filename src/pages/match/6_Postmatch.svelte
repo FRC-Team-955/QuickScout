@@ -1,5 +1,5 @@
 <script>
-	import { matchData, uiState } from "../../state.svelte";
+	import { matchData, appState } from "../../state.svelte";
 </script>
 
 <h2>Postmatch</h2>
@@ -14,5 +14,5 @@
 <br />
 
 <br />
-<button onclick={() => (uiState.endgameEntered = false)}>Previous (Endgame)</button>
-<button onclick={() => (uiState.postmatchEntered = true)}>Finish</button>
+<button onclick={() => (appState.matchState = "endgame")}>Previous (Endgame)</button>
+<button onclick={() => (appState.matchState = "export")}>Finish and Export</button>

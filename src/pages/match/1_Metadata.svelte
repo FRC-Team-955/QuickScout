@@ -1,5 +1,5 @@
 <script>
-	import { matchData, uiState } from "../../state.svelte";
+	import { matchData, appState } from "../../state.svelte";
 </script>
 
 <h2>Metadata</h2>
@@ -20,6 +20,6 @@
 <br />
 
 <br />
-<button onclick={() => (uiState.metadataEntered = true)} disabled={matchData.metadata.matchNumber == null || matchData.metadata.teamNumber == null || matchData.metadata.alliance == null}>
+<button onclick={() => (appState.matchState = "prematch")} disabled={matchData.metadata.matchNumber == null || matchData.metadata.teamNumber == null || matchData.metadata.alliance == null}>
 	Next (Prematch)
 </button>

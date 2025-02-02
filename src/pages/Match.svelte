@@ -1,6 +1,6 @@
 <script>
-	import { matchData, uiState } from "../state.svelte";
-	import Export from "./Export.svelte";
+	import { matchData, appState } from "../state.svelte";
+	import Export from "./match/7_Export.svelte";
 
 	import Metadata from "./match/1_Metadata.svelte";
 	import Pregame from "./match/2_Prematch.svelte";
@@ -10,17 +10,17 @@
 	import Postgame from "./match/6_Postmatch.svelte";
 </script>
 
-{#if !uiState.metadataEntered}
+{#if appState.matchState == "metadata"}
 	<Metadata />
-{:else if !uiState.prematchEntered}
+{:else if appState.matchState == "prematch"}
 	<Pregame />
-{:else if !uiState.autonomousEntered}
+{:else if appState.matchState == "autonomous"}
 	<Autonomous />
-{:else if !uiState.teleopEntered}
+{:else if appState.matchState =="teleop"}
 	<Teleop />
-{:else if !uiState.endgameEntered}
+{:else if appState.matchState == "endgame"}
 	<Endgame />
-{:else if !uiState.postmatchEntered}
+{:else if appState.matchState == "postmatch"}
 	<Postgame />
 {:else}
 	<Export />

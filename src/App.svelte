@@ -1,18 +1,17 @@
 <script>
 	import Match from "./pages/Match.svelte";
-	import Start from "./pages/Start.svelte";
-	import Settings from "./pages/Settings.svelte"
+	import Home from "./pages/Home.svelte"
 
-	import { scouterInfo, matchData, uiState, scoringState, } from "./state.svelte";
+	import { scouterInfo, matchData, appState, scoringState } from "./state.svelte";
 
-	$inspect(scouterInfo, matchData, uiState, scoringState);
+	$inspect(scouterInfo, matchData, appState, scoringState);
 </script>
 
 <main>
-	{#if uiState.matchStarted}
+	{#if appState.uiState == "match"}
 		<Match />
 	{:else}
-		<Start />
+		<Home />
 	{/if}
 </main>
 

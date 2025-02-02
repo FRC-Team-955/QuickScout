@@ -1,5 +1,5 @@
 <script>
-	import { matchData, uiState } from "../../state.svelte";
+	import { matchData, appState } from "../../state.svelte";
 
 	import cages from "../../assets/cages.png";
 </script>
@@ -18,10 +18,9 @@
 <br />
 <img src={cages} alt="Barge with cage levels indicated" />
 <br />
-
 <br />
-<button onclick={() => (uiState.teleopEntered = false)}>Previous (Teleop)</button>
-<button onclick={() => (uiState.endgameEntered = true)} disabled={matchData.endgame.barge == null}>Next (Postmatch)</button>
+<button onclick={() => (appState.matchState = "teleop")}>Previous (Teleop)</button>
+<button onclick={() => (appState.matchState = "postmatch")} disabled={matchData.endgame.barge == null}>Next (Postmatch)</button>
 
 <style>
 	img {

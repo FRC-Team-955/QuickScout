@@ -11,16 +11,20 @@ export function updateScouterInfo() {
 	localStorage.setItem(lastInitialKey, scouterInfo.lastInitial);
 }
 
-export let uiState = $state({
-	settingsOpen: false,
-	matchStarted: false,
-	metadataEntered: false,
-	prematchEntered: false,
-	autonomousEntered: false,
-	teleopEntered: false,
-	endgameEntered: false,
-	postmatchEntered: false,
-});
+export let appState = $state({
+	/** @type {"home" | "match"} */
+	uiState: "home",
+	/** @type {"start" | "settings"} */
+	homeState: "start",
+	/** @type {"metadata" | "prematch" | "autonomous" | "teleop" | "endgame" | "postmatch" | "export"} */
+	matchState: "prematch"
+})
+
+export function uiState(state) {
+	appState.uiState = state;
+	appState.homeState = "start";
+	appState.matchState = "prematch"
+}
 
 export let matchData = $state({
 	metadata: {
