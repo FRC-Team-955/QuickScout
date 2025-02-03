@@ -8,8 +8,8 @@
 </script>
 
 {#if buttonState.buttonState == "confirm exit"}
-    <button onclick={() => (buttonState.buttonState = "normal")}>Cancel Exit</button>
-    <button class="danger" onclick={() => (uiState("home"))}>Confirm Exit</button>
+    <button class="standard-button" onclick={() => (buttonState.buttonState = "normal")}>Cancel Exit</button>
+    <button class="standard-button standard-button--danger" onclick={() => (uiState("home"))}>Confirm Exit</button>
 {:else}
-    <button onclick={() => (buttonState.buttonState = "confirm exit")}>Return to Home</button>
+    <button class="standard-button" onclick={() => (buttonState.buttonState = "confirm exit")}>Return to Home</button>
 {/if}

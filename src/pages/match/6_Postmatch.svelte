@@ -18,6 +18,6 @@
 	<br />
 
 	<br />
-	<button onclick={() => (appState.matchState = "endgame")}>Previous (Endgame)</button>
-	<button onclick={() => (appState.matchState = "export")}>Finish and Export</button>
+	<button class="standard-button" onclick={() => (appState.matchState = "endgame")}>Previous (Endgame)</button>
+	<button class="standard-button" onclick={() => (appState.matchState = "export")}>Finish and Export</button>
 </div>

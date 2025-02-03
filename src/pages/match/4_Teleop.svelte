@@ -14,6 +14,6 @@
 	<br />
 
 	<br />
-	<button onclick={() => (appState.matchState = "autonomous")}>Previous (Autonomous)</button>
-	<button onclick={() => (appState.matchState = "endgame")}>Next (Endgame)</button>
+	<button class="standard-button" onclick={() => (appState.matchState = "autonomous")}>Previous (Autonomous)</button>
+	<button class="standard-button" onclick={() => (appState.matchState = "endgame")}>Next (Endgame)</button>
 </div>

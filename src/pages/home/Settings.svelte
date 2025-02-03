@@ -28,5 +28,11 @@
 	</label>
 	<br />
 
-	<button onclick={() => (appState.homeState = "start")} disabled={scouterInfo.firstName.length == 0 || scouterInfo.lastInitial.length == 0}>Return Home</button>
+	<button
+		class="standard-button"
+		onclick={() => (appState.homeState = "start")}
+		disabled={scouterInfo.firstName.length == 0 || scouterInfo.lastInitial.length == 0}
+	>
+		Return Home
+	</button>
 </div>

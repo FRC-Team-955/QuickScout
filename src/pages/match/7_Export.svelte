@@ -49,18 +49,18 @@
 		{@html svg}
 		<br />
 		<br />
-		<button onclick={() => (exportState = EXPORTSTATES.NOT_CHOSEN)}>Back</button>
+		<button class="standard-button" onclick={() => (exportState = EXPORTSTATES.NOT_CHOSEN)}>Back</button>
 	{:else if exportState == EXPORTSTATES.CHOSE_ONLINE}
 		<p>Sorry, not supported yet</p>
 		<br />
-		<button onclick={() => (exportState = EXPORTSTATES.NOT_CHOSEN)}>Back</button>
+		<button class="standard-button" onclick={() => (exportState = EXPORTSTATES.NOT_CHOSEN)}>Back</button>
 	{:else}
-		<button onclick={() => (exportState = EXPORTSTATES.CHOSE_ONLINE)}>Export via the internet</button>
+		<button class="standard-button" onclick={() => (exportState = EXPORTSTATES.CHOSE_ONLINE)}>Export via the internet</button>
 		<br />
-		<button onclick={() => (exportState = EXPORTSTATES.CHOSE_QRCODE)}>Export via QR code</button>
+		<button class="standard-button" onclick={() => (exportState = EXPORTSTATES.CHOSE_QRCODE)}>Export via QR code</button>
 		<br />
 		<br />
-		<button onclick={() => (appState.matchState = "postmatch")}>Previous (Postmatch)</button>
-		<button class="danger" onclick={() => location.reload()}>New match (ALL DATA WILL BE RESET!)</button>
+		<button class="standard-button" onclick={() => (appState.matchState = "postmatch")}>Previous (Postmatch)</button>
+		<button class="standard-button standard-button--danger" onclick={() => location.reload()}>New match (ALL DATA WILL BE RESET!)</button>
 	{/if}
 </div>

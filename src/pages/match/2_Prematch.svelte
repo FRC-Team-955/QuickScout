@@ -29,8 +29,14 @@
 	{/if}
 
 	<br />
-	<button onclick={() => (appState.matchState = "metadata")}>Previous (Metadata)</button>
-	<button onclick={() => (appState.matchState = "autonomous")} disabled={matchData.prematch.startingLocation == null && !matchData.prematch.noShow}>Next (Autonomous)</button>
+	<button class="standard-button" onclick={() => (appState.matchState = "metadata")}>Previous (Metadata)</button>
+	<button
+		class="standard-button"
+		onclick={() => (appState.matchState = "autonomous")}
+		disabled={matchData.prematch.startingLocation == null && !matchData.prematch.noShow}
+	>
+		Next (Autonomous)
+	</button>
 
 	<style>
 		img {

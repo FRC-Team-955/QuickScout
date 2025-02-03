@@ -68,42 +68,42 @@
 		<h3>Coral</h3>
 		{#if !scoringState.hasCoral}
 			<p>Choose coral acquisition method</p>
-			<button onclick={coralStationPickup}>Coral taken from station</button>
+			<button class="standard-button" onclick={coralStationPickup}>Coral taken from station</button>
 			<br />
-			<button onclick={coralGroundIntake}>Coral taken from ground</button>
+			<button class="standard-button" onclick={coralGroundIntake}>Coral taken from ground</button>
 			{#if isAutonomous && !matchData.autonomous.coral.preloaded}
 				<br />
-				<button onclick={coralPreload}>Coral preloaded</button>
+				<button class="standard-button" onclick={coralPreload}>Coral preloaded</button>
 			{/if}
 		{:else}
 			<p>Choose coral scoring method</p>
-			<button onclick={coralL4}>Scored L4</button>
+			<button class="standard-button" onclick={coralL4}>Scored L4</button>
 			<br />
-			<button onclick={coralL3}>Scored L3</button>
+			<button class="standard-button" onclick={coralL3}>Scored L3</button>
 			<br />
-			<button onclick={coralL2}>Scored L2</button>
+			<button class="standard-button" onclick={coralL2}>Scored L2</button>
 			<br />
-			<button onclick={coralL1}>Scored L1 (Trough)</button>
+			<button class="standard-button" onclick={coralL1}>Scored L1 (Trough)</button>
 			<br />
-			<button onclick={coralDropped}>Dropped</button>
+			<button class="standard-button" onclick={coralDropped}>Dropped</button>
 		{/if}
 	</div>
 	<div class="column right-column">
 		<h3>Algae</h3>
 		{#if !scoringState.hasAlgae}
 			<p>Choose algae acquisition/descore method</p>
-			<button onclick={algaeReefDrop}>Descored from reef and dropped</button>
+			<button class="standard-button" onclick={algaeReefDrop}>Descored from reef and dropped</button>
 			<br />
-			<button onclick={algaeReefTake}>Descored from reef and taken</button>
+			<button class="standard-button" onclick={algaeReefTake}>Descored from reef and taken</button>
 			<br />
-			<button onclick={algaeGroundIntake}>Taken from ground</button>
+			<button class="standard-button" onclick={algaeGroundIntake}>Taken from ground</button>
 		{:else}
 			<p>Choose algae scoring method</p>
-			<button onclick={algaeProcessor}>Scored in processor</button>
+			<button class="standard-button" onclick={algaeProcessor}>Scored in processor</button>
 			<br />
-			<button onclick={algaeNet}>Scored in net</button>
+			<button class="standard-button" onclick={algaeNet}>Scored in net</button>
 			<br />
-			<button onclick={algaeDropped}>Dropped</button>
+			<button class="standard-button" onclick={algaeDropped}>Dropped</button>
 		{/if}
 	</div>
 </div>

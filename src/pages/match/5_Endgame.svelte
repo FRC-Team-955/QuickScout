@@ -23,8 +23,8 @@
 	<img src={cages} alt="Barge with cage levels indicated" />
 	<br />
 	<br />
-	<button onclick={() => (appState.matchState = "teleop")}>Previous (Teleop)</button>
-	<button onclick={() => (appState.matchState = "postmatch")} disabled={matchData.endgame.barge == null}>Next (Postmatch)</button>
+	<button class="standard-button" onclick={() => (appState.matchState = "teleop")}>Previous (Teleop)</button>
+	<button class="standard-button" onclick={() => (appState.matchState = "postmatch")} disabled={matchData.endgame.barge == null}>Next (Postmatch)</button>
 
 	<style>
 		img {

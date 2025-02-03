@@ -7,7 +7,7 @@
 	<h3 style="margin-block-start: 0">Made by FRC Teams 749, 955, 997</h3>
 
 
-	<button onclick={() => (appState.homeState = "settings")}>Settings</button>
+	<button class="standard-button" onclick={() => (appState.homeState = "settings")}>Settings</button>
 	<br />
 
 	{#if scouterInfo.firstName.length == 0 || scouterInfo.lastInitial.length == 0}
@@ -19,5 +19,11 @@
 	{/if}
 
 	<br />
-	<button onclick={() => (uiState("match"))} disabled={scouterInfo.firstName.length == 0 || scouterInfo.lastInitial.length == 0}>Start match</button>
+	<button
+		class="standard-button"
+		onclick={() => (uiState("match"))}
+		disabled={scouterInfo.firstName.length == 0 || scouterInfo.lastInitial.length == 0}
+	>
+		Start match
+	</button>
 </div>

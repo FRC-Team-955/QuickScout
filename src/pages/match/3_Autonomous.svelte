@@ -17,6 +17,6 @@
 	<br />
 
 	<br />
-	<button onclick={() => (appState.matchState = "prematch")}>Previous (Prematch)</button>
-	<button onclick={() => (appState.matchState = "teleop")}>Next (Teleop)</button>
+	<button class="standard-button" onclick={() => (appState.matchState = "prematch")}>Previous (Prematch)</button>
+	<button class="standard-button" onclick={() => (appState.matchState = "teleop")}>Next (Teleop)</button>
 </div>

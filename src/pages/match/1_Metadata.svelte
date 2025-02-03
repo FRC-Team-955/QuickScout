@@ -26,7 +26,11 @@
 	<br />
 
 	<br />
-	<button onclick={() => (appState.matchState = "prematch")} disabled={matchData.metadata.matchNumber == null || matchData.metadata.teamNumber == null || matchData.metadata.alliance == null}>
+	<button
+		class="standard-button"
+		onclick={() => (appState.matchState = "prematch")}
+		disabled={matchData.metadata.matchNumber == null || matchData.metadata.teamNumber == null || matchData.metadata.alliance == null}
+	>
 		Next (Prematch)
 	</button>
 </div>
