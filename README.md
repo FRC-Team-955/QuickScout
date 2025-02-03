@@ -1,6 +1,6 @@
 # QuickScout
 
-QRScout but fast
+QRScout but quick
 
 ---
 
