@@ -7,7 +7,7 @@
 
 <ReturnToHome />
 
-<div class="main">
+<div class="contents">
 	<h2>Endgame</h2>
 
 	<label>

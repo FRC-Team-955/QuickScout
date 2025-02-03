@@ -2,7 +2,7 @@
 	import { scouterInfo, updateScouterInfo, appState, uiState } from "../../state.svelte";
 </script>
 
-<div class="main">
+<div class="contents">
 	<h1 style="margin-block-end: 0">QuickScout</h1>
 	<h3 style="margin-block-start: 0">Made by FRC Teams 749, 955, 997</h3>
 

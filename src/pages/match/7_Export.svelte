@@ -42,7 +42,7 @@
 
 <ReturnToHome />
 
-<div class="main">
+<div class="contents">
 	<h2>Export match</h2>
 
 	{#if exportState == EXPORTSTATES.CHOSE_QRCODE}

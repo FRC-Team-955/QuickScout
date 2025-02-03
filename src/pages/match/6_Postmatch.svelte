@@ -5,7 +5,7 @@
 
 <ReturnToHome />
 
-<div class="main">
+<div class="contents">
 	<h2>Postmatch</h2>
 
 	<label>Dead: <input bind:checked={matchData.postmatch.dead} type="checkbox" /></label>

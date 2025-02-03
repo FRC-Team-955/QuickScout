@@ -7,7 +7,7 @@
 
 <ReturnToHome />
 
-<div class="main">
+<div class="contents">
 	<h2>Autonomous</h2>
 
 	<label>Left starting line: <input bind:checked={matchData.autonomous.leave} type="checkbox" /></label>

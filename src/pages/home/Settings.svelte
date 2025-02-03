@@ -2,7 +2,7 @@
     import { scouterInfo, updateScouterInfo, appState } from "../../state.svelte";
 </script>
 
-<div class="main">
+<div class="contents">
 	<h1>Settings</h1>
 
 	<label>

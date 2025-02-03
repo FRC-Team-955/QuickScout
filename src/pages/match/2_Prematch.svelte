@@ -8,7 +8,7 @@
 
 <ReturnToHome />
 
-<div class="main">
+<div class="contents">
 	<h2>Prematch</h2>
 
 	<label>No show: <input bind:checked={matchData.prematch.noShow} type="checkbox" /></label>

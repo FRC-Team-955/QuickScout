@@ -3,9 +3,11 @@
 	import ReturnToHome from "../../assets/ReturnToHome.svelte";
 </script>
 
-<ReturnToHome />
+<div>
+	<ReturnToHome />
+</div>
 
-<div class="main">
+<div class="contents">
 	<h2>Metadata</h2>
 
 	<label>Match number: <input bind:value={matchData.metadata.matchNumber} type="number" /></label>

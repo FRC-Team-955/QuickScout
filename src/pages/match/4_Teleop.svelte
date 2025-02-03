@@ -7,7 +7,7 @@
 
 <ReturnToHome />
 
-<div class="main">
+<div class="contents">
 	<h2>Teleop</h2>
 
 	<Scoring isAutonomous={false} />

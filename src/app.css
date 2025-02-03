@@ -1,17 +1,37 @@
+/*
+I will try to use BEM for our standard conventions - seems pretty popular and works well
+Before making any edits, please read up on conventions here: https://getbem.com/introduction/
+If you find something that doesn't follow the conventions, feel free to correct it
+
+Reminder if you forgot after reading the above instructions:
+
+Block: Standalone element, e.g. header, container, menu
+Element: No standalone meaning, has to be tied to an element, e.g. menu item, header title
+Modifier: A flag on a block or element to change appearance or behavior, e.g. disabled, highlighted
+
+Blocks are named as-is (.block)
+Elements are their root plus two underscores (.block__elem)
+Modifiers use two dashes (.block--mod, .block__elem--mod)
+
+Try to not have to nest multiple elemtns/modifiers (e.g. .block_elem1_elem2 is bad)
+*/
+
 :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
 
-	color-scheme: light dark;
-	color: rgba(255, 255, 255, 0.87);
-	background-color: #242424;
+	color-scheme: dark;
+	color: rgba(0, 0, 0, 0.87);
+	background-color: #ffffff;
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
+/* Hyperlinks */
 
 a {
 	font-weight: 500;
@@ -22,6 +42,8 @@ a:hover {
 	color: #535bf2;
 }
 
+/* Body */
+
 body {
 	margin: 0;
 	display: inline;
@@ -29,9 +51,17 @@ body {
 	min-height: 100vh;
 }
 
-.main {
+.header {
 	margin: 0;
-	display: flex;
+	display: block;
+	position: absolute;
+	height: 80px;
+	width: 100%;
+}
+
+.contents {
+	margin-top: 100px;
+	display: block;
 	flex-direction: column;
 	place-items: center;
 	text-align: center;
