@@ -5,9 +5,9 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-	base: "/",
+	base: "",
 	build: {
-		outDir: "dist",
+		outDir: "dist/QuickScout",
 	},
 	plugins: [
 		svelte(),
@@ -22,8 +22,8 @@ export default defineConfig({
 			manifest: {
 				name: "QuickScout",
 				short_name: "QuickScout",
-				start_url: "/",
-				scope: "/",
+				start_url: "/QuickScout/",
+				scope: "/QuickScout/",
 				display: "fullscreen",
 				description: "A scouting app for the 2025 FRC Season for teams 955, 749, and 997",
 				lang: "en",
