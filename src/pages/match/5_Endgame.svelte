@@ -20,15 +20,15 @@
 		</select>
 	</label>
 	<br />
-	<img src={cages} alt="Barge with cage levels indicated" />
+	<img src={cages} style="max-width: 50%" alt="Barge with cage levels indicated" />
 	<br />
 	<br />
 	<button class="standard-button" onclick={() => (appState.matchState = "teleop")}>Previous (Teleop)</button>
-	<button class="standard-button" onclick={() => (appState.matchState = "postmatch")} disabled={matchData.endgame.barge == null}>Next (Postmatch)</button>
-
-	<style>
-		img {
-			max-width: 50%;
-		}
-	</style>
+	<button
+		class="standard-button"
+		onclick={() => (appState.matchState = "postmatch")}
+		disabled={matchData.endgame.barge == null}
+	>
+		Next (Postmatch)
+	</button>
 </div>
