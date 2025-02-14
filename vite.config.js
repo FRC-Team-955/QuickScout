@@ -8,6 +8,11 @@ export default defineConfig({
 	base: "./",
 	build: {
 		outDir: "dist",
+		rollupOptions: {
+			output: {
+			  assetFileNames: 'assets/[name][extname]', // No hash in the filename
+			}
+		}
 	},
 	plugins: [
 		svelte(),
