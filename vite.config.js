@@ -15,7 +15,7 @@ export default defineConfig({
 			manifest: {
 				name: "QuickScout",
 				short_name: "QuickScout",
-				start_url: "https://frc-team-955.github.io/",
+				start_url: "https://frc-team-955.github.io/QuickScout/dist/",
 				display: "fullscreen",
 				description: "A scouting app for the 2025 FRC Season for teams 955, 749, and 997",
 				lang: "en",
