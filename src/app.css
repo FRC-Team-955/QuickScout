@@ -31,62 +31,6 @@ Try to not have to nest multiple elemtns/modifiers (e.g. .block_elem1_elem2 is b
 	-moz-osx-font-smoothing: grayscale;
 }
 
-/* Hyperlinks */
-
-a {
-	font-weight: 500;
-	color: #646cff;
-	text-decoration: inherit;
-}
-a:hover {
-	color: #535bf2;
-}
-
-/* Body */
-
-body {
-	margin: 0;
-	display: inline;
-	min-width: 320px;
-	min-height: 100vh;
-}
-
-/* Header */
-
-.header {
-	margin: 0;
-	display: block;
-	position: absolute;
-	height: 80px;
-	width: 100%;
-}
-
-.contents {
-	margin-top: 100px;
-	display: block;
-	flex-direction: column;
-	place-items: center;
-	text-align: center;
-	min-width: 320px;
-	min-height: 100vh;
-}
-
-h1 {
-	font-size: 3.2em;
-	line-height: 1.1;
-}
-
-.card {
-	padding: 2em;
-}
-
-#app {
-	width: 100%;
-	height: 100%;
-	margin: 0 auto;
-	padding: 2rem;
-}
-
 /* Buttons */
 
 .standard-button {
@@ -113,6 +57,84 @@ h1 {
 	background-color: rgb(255, 90, 90);
 }
 
-.standard-button--fixed-size-m {
+/* Hyperlinks */
+
+a {
+	font-weight: 500;
+	color: #646cff;
+	text-decoration: inherit;
+}
+a:hover {
+	color: #535bf2;
+}
+
+/* Body */
+
+body {
+	margin: 0;
+	display: inline;
+	min-width: 320px;
+	min-height: 100vh;
+}
+
+/* Header */
+
+.header {
+    background-color: #ffffff;
+	height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+	display: block;
+    z-index: 4;
+	margin: 0;
+	border-bottom: 10px solid rgb(158, 0, 0);
+}
+
+.header__img {
+	max-width: 300px
+}
+
+.header--right {
+	position: relative;
+	right: 0px;
+	margin-left: auto;
+	margin-right: 5px;
+	float: right;
+}
+
+.header__return-button {
 	width: 175px;
+	overflow: hidden;
+	display: inline-block;
+	top: 50%;
+	bottom: 50%;
+	transform: translate(0%, -50%);
+}
+
+.contents {
+	margin-top: 100px;
+	display: block;
+	flex-direction: column;
+	place-items: center;
+	text-align: center;
+	min-width: 320px;
+	min-height: 100vh;
+}
+
+h1 {
+	font-size: 3.2em;
+	line-height: 1.1;
+}
+
+.card {
+	padding: 2em;
+}
+
+#app {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	padding: 2rem;
 }

@@ -1,9 +1,12 @@
 <script>
 	import { matchData, appState } from "../../state.svelte";
+
+	import textlogo from "../../assets/text-logo-removebg.png";
 	import ReturnToHome from "../../assets/ReturnToHome.svelte";
 </script>
 
-<div>
+<div class="header">
+	<img src={textlogo} class="header__img" alt="QuickScout" />
 	<ReturnToHome />
 </div>
 
