@@ -12,7 +12,7 @@
 </div>
 
 <div class="contents">
-	<h2>Prematch</h2>
+	<div class="subheader subheader--underline subheader--underline--green">Prematch</div>
 
 	<label>No show: <input bind:checked={matchData.prematch.noShow} type="checkbox" /></label>
 	<br />
@@ -27,19 +27,24 @@
 			</select>
 		</label>
 		<br />
-		<img src={matchData.metadata.alliance == "blue" ? startingPositionBlue : startingPositionRed} alt="Field with starting locations indicated" />
+		<img 
+			style="max-width:50%"
+			src={matchData.metadata.alliance == "blue" ? startingPositionBlue : startingPositionRed}
+			alt="Field with starting locations indicated"
+		/>
 		<br />
 	{/if}
+</div>
 
-	<br />
-	<button class="standard-button" onclick={() => (appState.matchState = "metadata")}>Previous (Metadata)</button>
-	<button class="standard-button" onclick={() => (appState.matchState = "autonomous")} disabled={matchData.prematch.startingLocation == null && !matchData.prematch.noShow}>
-		Next (Autonomous)
-	</button>
-
-	<style>
-		img {
-			max-width: 50%;
-		}
-	</style>
+<div class="footer">
+	<div class="footer--middle">
+		<button class="standard-button footer__button" onclick={() => (appState.matchState = "metadata")}>Previous (Metadata)</button>
+		<button
+			class="standard-button footer__button"
+			onclick={() => (appState.matchState = "autonomous")}
+			disabled={matchData.prematch.startingLocation == null && !matchData.prematch.noShow}
+		>
+			Next (Autonomous)
+		</button>
+	</div>
 </div>

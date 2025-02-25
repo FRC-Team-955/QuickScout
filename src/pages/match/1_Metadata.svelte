@@ -10,29 +10,31 @@
 </div>
 
 <div class="contents">
-	<h2>Metadata</h2>
+	<div class="subheader subheader--underline subheader--underline--blue">Metadata</div>
 
-	<label>Match number: <input bind:value={matchData.metadata.matchNumber} type="number" /></label>
+	<label>Match number: <input class="input input--disable-spinner" bind:value={matchData.metadata.matchNumber} type="number" placeholder="Enter Match Number"/></label>
 	<br />
 
-	<label>Team number: <input bind:value={matchData.metadata.teamNumber} type="number" /></label>
+	<label>Team number: <input class="input input--disable-spinner" bind:value={matchData.metadata.teamNumber} type="number" placeholder="Enter Team Number" /></label>
 	<br />
 
 	<label>
 		Alliance:
-		<select bind:value={matchData.metadata.alliance}>
+		<select class="input" bind:value={matchData.metadata.alliance}>
 			<option value="blue">Blue</option>
 			<option value="red">Red</option>
 		</select>
 	</label>
-	<br />
+</div>
 
-	<br />
-	<button
-		class="standard-button"
-		onclick={() => (appState.matchState = "prematch")}
-		disabled={matchData.metadata.matchNumber == null || matchData.metadata.teamNumber == null || matchData.metadata.alliance == null}
-	>
-		Next (Prematch)
-	</button>
+<div class="footer">
+	<div class="footer--middle">
+		<button
+			class="standard-button footer__button"
+			onclick={() => (appState.matchState = "prematch")}
+			disabled={matchData.metadata.matchNumber == null || matchData.metadata.teamNumber == null || matchData.metadata.alliance == null}
+		>
+			Next (Prematch)
+		</button>
+	</div>
 </div>

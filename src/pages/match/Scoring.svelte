@@ -63,64 +63,35 @@
 	}
 </script>
 
-<div class="row">
-	<div class="column">
-		<h3>Coral</h3>
-		{#if !scoringState.hasCoral}
-			<p>Choose coral acquisition method</p>
-			<button class="standard-button" onclick={coralStationPickup}>Coral taken from station</button>
-			<br />
-			<button class="standard-button" onclick={coralGroundIntake}>Coral taken from ground</button>
+<div class="scoring-grid full-height">
+	{#if !scoringState.hasCoral}
+		<div><button class="standard-button scoring-grid__button" onclick={coralStationPickup}>Coral taken from station</button></div>
+		<div><button class="standard-button scoring-grid__button" onclick={coralGroundIntake}>Coral taken from ground</button></div>
+		<div>
 			{#if isAutonomous && !matchData.autonomous.coral.preloaded}
-				<br />
-				<button class="standard-button" onclick={coralPreload}>Coral preloaded</button>
+			<button class="standard-button scoring-grid__button" onclick={coralPreload}>Coral preloaded</button>
 			{/if}
-		{:else}
-			<p>Choose coral scoring method</p>
-			<button class="standard-button" onclick={coralL4}>Scored L4</button>
-			<br />
-			<button class="standard-button" onclick={coralL3}>Scored L3</button>
-			<br />
-			<button class="standard-button" onclick={coralL2}>Scored L2</button>
-			<br />
-			<button class="standard-button" onclick={coralL1}>Scored L1 (Trough)</button>
-			<br />
-			<button class="standard-button" onclick={coralDropped}>Dropped</button>
-		{/if}
-	</div>
-	<div class="column right-column">
-		<h3>Algae</h3>
-		{#if !scoringState.hasAlgae}
-			<p>Choose algae acquisition/descore method</p>
-			<button class="standard-button" onclick={algaeReefDrop}>Descored from reef and dropped</button>
-			<br />
-			<button class="standard-button" onclick={algaeReefTake}>Descored from reef and taken</button>
-			<br />
-			<button class="standard-button" onclick={algaeGroundIntake}>Taken from ground</button>
-		{:else}
-			<p>Choose algae scoring method</p>
-			<button class="standard-button" onclick={algaeProcessor}>Scored in processor</button>
-			<br />
-			<button class="standard-button" onclick={algaeNet}>Scored in net</button>
-			<br />
-			<button class="standard-button" onclick={algaeDropped}>Dropped</button>
-		{/if}
-	</div>
+		</div>
+		<div></div>
+		<div></div>
+	{:else}
+		<div><button class="standard-button scoring-grid__button" onclick={coralL4}>Scored L4</button></div>
+		<div><button class="standard-button scoring-grid__button" onclick={coralL3}>Scored L3</button></div>
+		<div><button class="standard-button scoring-grid__button" onclick={coralL2}>Scored L2</button></div>
+		<div><button class="standard-button scoring-grid__button" onclick={coralL1}>Scored L1 (Trough)</button></div>
+		<div><button class="standard-button scoring-grid__button" onclick={coralDropped}>Dropped</button></div>
+	{/if}
+	{#if !scoringState.hasAlgae}
+		<div><button class="standard-button scoring-grid__button" onclick={algaeReefDrop}>Descored from reef and dropped</button></div>
+		<div><button class="standard-button scoring-grid__button" onclick={algaeReefTake}>Descored from reef and taken</button></div>
+		<div><button class="standard-button scoring-grid__button" onclick={algaeGroundIntake}>Taken from ground</button></div>
+		<div></div>
+		<div></div>
+	{:else}
+		<div><button class="standard-button scoring-grid__button" onclick={algaeProcessor}>Scored in processor</button></div>
+		<div><button class="standard-button scoring-grid__button" onclick={algaeNet}>Scored in net</button></div>
+		<div><button class="standard-button scoring-grid__button" onclick={algaeDropped}>Dropped</button></div>
+		<div></div>
+		<div></div>
+	{/if}
 </div>
-
-<style>
-	.row {
-		display: flex;
-		min-height: 350px;
-	}
-
-	.column {
-		flex: 50%;
-		min-width: 300px;
-		max-width: 300px;
-	}
-
-	.right-column {
-		padding-left: 32px;
-	}
-</style>

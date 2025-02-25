@@ -17,9 +17,11 @@
 	<br />
 
 	<Scoring isAutonomous={true} />
-	<br />
+</div>
 
-	<br />
-	<button class="standard-button" onclick={() => (appState.matchState = "prematch")}>Previous (Prematch)</button>
-	<button class="standard-button" onclick={() => (appState.matchState = "teleop")}>Next (Teleop)</button>
+<div class="footer">
+	<div class="footer--middle">
+		<button class="standard-button footer__button" onclick={() => (appState.matchState = "prematch")}>Previous (Prematch)</button>
+		<button class="standard-button footer__button" onclick={() => (appState.matchState = "teleop")}>Next (Teleop)</button>
+	</div>
 </div>
