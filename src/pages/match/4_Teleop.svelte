@@ -3,6 +3,7 @@
 	import { matchData, appState } from "../../state.svelte";
 	import ReturnToHome from "./ReturnToHome.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
+	import Header from "./Header.svelte";
 </script>
 
 <div class="header">
@@ -11,6 +12,8 @@
 </div>
 
 <div class="contents">
+	<Header />
+
 	<h2>Teleop</h2>
 
 	<Scoring isAutonomous={false} />

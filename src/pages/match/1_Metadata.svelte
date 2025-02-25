@@ -2,6 +2,7 @@
 	import { matchData, appState } from "../../state.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
 	import ReturnToHome from "./ReturnToHome.svelte";
+	import Header from "./Header.svelte";
 </script>
 
 <div class="header">
@@ -10,6 +11,8 @@
 </div>
 
 <div class="contents">
+	<Header />
+
 	<h2>Metadata</h2>
 
 	<label>Match number: <input bind:value={matchData.metadata.matchNumber} type="number" /></label>

@@ -4,6 +4,8 @@
 	import startingPositionBlue from "../../assets/starting-position-blue.png";
 	import ReturnToHome from "./ReturnToHome.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
+	import { queuingState, serverState } from "../../queuing.svelte";
+	import Header from "./Header.svelte";
 </script>
 
 <div class="header">
@@ -12,6 +14,8 @@
 </div>
 
 <div class="contents">
+	<Header />
+
 	<h2>Prematch</h2>
 
 	<label>No show: <input bind:checked={matchData.prematch.noShow} type="checkbox" /></label>
@@ -32,7 +36,9 @@
 	{/if}
 
 	<br />
-	<button class="standard-button" onclick={() => (appState.matchState = "metadata")}>Previous (Metadata)</button>
+	{#if !serverState.connected}
+		<button class="standard-button" onclick={() => (appState.matchState = "metadata")}>Previous (Metadata)</button>
+	{/if}
 	<button class="standard-button" onclick={() => (appState.matchState = "autonomous")} disabled={matchData.prematch.startingLocation == null && !matchData.prematch.noShow}>
 		Next (Autonomous)
 	</button>

@@ -2,6 +2,7 @@
 	import ReturnToHome from "./ReturnToHome.svelte";
 	import { matchData, appState } from "../../state.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
+	import Header from "./Header.svelte";
 </script>
 
 <div class="header">
@@ -10,6 +11,8 @@
 </div>
 
 <div class="contents">
+	<Header />
+
 	<h2>Postmatch</h2>
 
 	<label>Dead: <input bind:checked={matchData.postmatch.dead} type="checkbox" /></label>

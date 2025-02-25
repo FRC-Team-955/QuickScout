@@ -5,6 +5,7 @@
 	import ReturnToHome from "./ReturnToHome.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
 	import { queuingState } from "../../queuing.svelte";
+	import Header from "./Header.svelte";
 
 	const EXPORTSTATES = Object.freeze({
 		NOT_CHOSEN: 0,
@@ -48,6 +49,8 @@
 </div>
 
 <div class="contents">
+	<Header />
+
 	<h2>Export match</h2>
 
 	{#if exportState == EXPORTSTATES.CHOSE_QRCODE}

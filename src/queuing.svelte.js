@@ -75,6 +75,7 @@ export let queuingState = $state({
 	match: {
 		// See onValue(matchRef) for defaults
 		matchRunning: false,
+		matchEnded: false,
 		matchNumber: 0,
 		/** @type {{ [team: number]: "red" | "blue" }} */
 		teamAllianceColors: {},
@@ -127,6 +128,7 @@ onValue(matchRef, (snap) => {
 	queuingState.match = snap.val() || {};
 	delete queuingState.match["_"];
 	queuingState.match.matchRunning = queuingState.match.matchRunning || false;
+	queuingState.match.matchEnded = queuingState.match.matchEnded || false;
 	queuingState.match.matchNumber = queuingState.match.matchNumber || 0;
 	queuingState.match.teamAllianceColors = queuingState.match.teamAllianceColors || {};
 	queuingState.match.objectiveScouters = queuingState.match.objectiveScouters || {};
@@ -202,5 +204,10 @@ export function startMatch() {
 	}
 
 	queuingState.match.matchRunning = true;
+	set(matchRef, queuingState.match);
+}
+
+export function signalMatchEnded() {
+	queuingState.match.matchEnded = true;
 	set(matchRef, queuingState.match);
 }
