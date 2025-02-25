@@ -1,29 +1,32 @@
-const firstNameKey = "firstName";
-const lastInitialKey = "lastInitial";
+const scouterIDKey = "scouterID";
+const emailKey = "email";
+const passwordKey = "password";
 
 export let scouterInfo = $state({
-	firstName: localStorage.getItem(firstNameKey) || "",
-	lastInitial: localStorage.getItem(lastInitialKey) || "",
+	scouterID: localStorage.getItem(scouterIDKey) || "",
+	email: localStorage.getItem(emailKey) || "",
+	password: localStorage.getItem(passwordKey) || "",
 });
 
-export function updateScouterInfo() {
-	localStorage.setItem(firstNameKey, scouterInfo.firstName);
-	localStorage.setItem(lastInitialKey, scouterInfo.lastInitial);
+export function persistScouterInfo() {
+	localStorage.setItem(scouterIDKey, scouterInfo.scouterID);
+	localStorage.setItem(emailKey, scouterInfo.email);
+	localStorage.setItem(passwordKey, scouterInfo.password);
 }
 
 export let appState = $state({
 	/** @type {"home" | "match"} */
 	uiState: "home",
-	/** @type {"start" | "settings"} */
-	homeState: "start",
+	/** @type {"setup" | "start"} */
+	homeState: scouterInfo.scouterID.length >= 2 ? "start" : "setup",
 	/** @type {"metadata" | "prematch" | "autonomous" | "teleop" | "endgame" | "postmatch" | "export"} */
-	matchState: "metadata"
-})
+	matchState: "metadata",
+});
 
-export function uiState(state) {
+export function setUIState(state) {
 	appState.uiState = state;
 	appState.homeState = "start";
-	appState.matchState = "metadata"
+	appState.matchState = "metadata";
 }
 
 export let matchData = $state({

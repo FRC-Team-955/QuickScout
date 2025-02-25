@@ -1,11 +1,14 @@
 <script>
 	import { matchData, appState } from "../../state.svelte";
-
 	import cages from "../../assets/cages.png";
-    import ReturnToHome from "../../assets/ReturnToHome.svelte";
+	import ReturnToHome from "./ReturnToHome.svelte";
+	import textlogo from "../../assets/text-logo-removebg.png";
 </script>
 
-<ReturnToHome />
+<div class="header">
+	<img src={textlogo} class="header__img" alt="QuickScout" />
+	<ReturnToHome />
+</div>
 
 <div class="contents">
 	<h2>Endgame</h2>
@@ -24,11 +27,5 @@
 	<br />
 	<br />
 	<button class="standard-button" onclick={() => (appState.matchState = "teleop")}>Previous (Teleop)</button>
-	<button
-		class="standard-button"
-		onclick={() => (appState.matchState = "postmatch")}
-		disabled={matchData.endgame.barge == null}
-	>
-		Next (Postmatch)
-	</button>
+	<button class="standard-button" onclick={() => (appState.matchState = "postmatch")} disabled={matchData.endgame.barge == null}> Next (Postmatch) </button>
 </div>

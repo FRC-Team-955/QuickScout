@@ -1,29 +1,23 @@
 <script>
-	import { scouterInfo, updateScouterInfo, appState, uiState } from "../../state.svelte";
+	import { serverState } from "../../queuing.svelte";
+	import { scouterInfo, persistScouterInfo, appState, setUIState } from "../../state.svelte";
+	import Lead from "./start/Lead.svelte";
+	import Scouter from "./start/Scouter.svelte";
+
+	import textlogo from "../../assets/text-logo-removebg.png";
 </script>
 
 <div class="contents">
-	<h1 style="margin-block-end: 0">QuickScout</h1>
+	<img src={textlogo} class="header__img" alt="QuickScout" />
 	<h3 style="margin-block-start: 0">Made by FRC Teams 749, 955, 997</h3>
 
+	<button class="standard-button" onclick={() => (appState.homeState = "setup")}>Setup</button>
 
-	<button class="standard-button" onclick={() => (appState.homeState = "settings")}>Settings</button>
-	<br />
+	<p>Welcome! Your scouter ID is set to {scouterInfo.scouterID}</p>
 
-	{#if scouterInfo.firstName.length == 0 || scouterInfo.lastInitial.length == 0}
-		<br />
-		Please set your name in settings.
+	{#if scouterInfo.scouterID.length > 2}
+		<Lead />
 	{:else}
-		<br />
-		Welcome! Your name is set to {scouterInfo.firstName} {scouterInfo.lastInitial}
+		<Scouter />
 	{/if}
-
-	<br />
-	<button
-		class="standard-button"
-		onclick={() => (uiState("match"))}
-		disabled={scouterInfo.firstName.length == 0 || scouterInfo.lastInitial.length == 0}
-	>
-		Start match
-	</button>
 </div>

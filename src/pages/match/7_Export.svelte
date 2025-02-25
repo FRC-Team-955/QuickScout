@@ -2,7 +2,9 @@
 	import { toSVGString } from "../../third-party/node-qrcode/lib/browser";
 
 	import { scouterInfo, matchData, appState } from "../../state.svelte";
-    import ReturnToHome from "../../assets/ReturnToHome.svelte";
+	import ReturnToHome from "./ReturnToHome.svelte";
+	import textlogo from "../../assets/text-logo-removebg.png";
+	import { queuingState } from "../../queuing.svelte";
 
 	const EXPORTSTATES = Object.freeze({
 		NOT_CHOSEN: 0,
@@ -26,7 +28,7 @@
 
 	const allValues = [
 		// ensure order
-		...objectValuesDeep(scouterInfo),
+		scouterInfo.scouterID,
 		...objectValuesDeep(matchData.metadata),
 		...objectValuesDeep(matchData.prematch),
 		...objectValuesDeep(matchData.autonomous),
@@ -40,7 +42,10 @@
 	});
 </script>
 
-<ReturnToHome />
+<div class="header">
+	<img src={textlogo} class="header__img" alt="QuickScout" />
+	<ReturnToHome />
+</div>
 
 <div class="contents">
 	<h2>Export match</h2>
@@ -61,6 +66,8 @@
 		<br />
 		<br />
 		<button class="standard-button" onclick={() => (appState.matchState = "postmatch")}>Previous (Postmatch)</button>
-		<button class="standard-button standard-button--danger" onclick={() => location.reload()}>New match (ALL DATA WILL BE RESET!)</button>
+		{#if !queuingState.match.matchRunning}
+			<button class="standard-button standard-button--danger" onclick={() => location.reload()}>New match (ALL DATA WILL BE RESET!)</button>
+		{/if}
 	{/if}
 </div>

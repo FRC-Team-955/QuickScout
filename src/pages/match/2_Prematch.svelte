@@ -1,12 +1,15 @@
 <script>
 	import { matchData, appState } from "../../state.svelte";
-
 	import startingPositionRed from "../../assets/starting-position-red.png";
 	import startingPositionBlue from "../../assets/starting-position-blue.png";
-    import ReturnToHome from "../../assets/ReturnToHome.svelte";
+	import ReturnToHome from "./ReturnToHome.svelte";
+	import textlogo from "../../assets/text-logo-removebg.png";
 </script>
 
-<ReturnToHome />
+<div class="header">
+	<img src={textlogo} class="header__img" alt="QuickScout" />
+	<ReturnToHome />
+</div>
 
 <div class="contents">
 	<h2>Prematch</h2>
@@ -30,11 +33,7 @@
 
 	<br />
 	<button class="standard-button" onclick={() => (appState.matchState = "metadata")}>Previous (Metadata)</button>
-	<button
-		class="standard-button"
-		onclick={() => (appState.matchState = "autonomous")}
-		disabled={matchData.prematch.startingLocation == null && !matchData.prematch.noShow}
-	>
+	<button class="standard-button" onclick={() => (appState.matchState = "autonomous")} disabled={matchData.prematch.startingLocation == null && !matchData.prematch.noShow}>
 		Next (Autonomous)
 	</button>
 

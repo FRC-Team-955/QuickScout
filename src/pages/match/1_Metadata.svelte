@@ -1,8 +1,7 @@
 <script>
 	import { matchData, appState } from "../../state.svelte";
-
 	import textlogo from "../../assets/text-logo-removebg.png";
-	import ReturnToHome from "../../assets/ReturnToHome.svelte";
+	import ReturnToHome from "./ReturnToHome.svelte";
 </script>
 
 <div class="header">
