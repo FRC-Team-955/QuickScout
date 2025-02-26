@@ -13,7 +13,7 @@
 	<h1>Setup</h1>
 
 	<label>
-		Scouter ID: <input
+		Scouter ID: <input class="input"
 			bind:value={() => scouterInfo.scouterID,
 			(v) => {
 				scouterInfo.scouterID = v.toUpperCase();
@@ -29,7 +29,7 @@
 		<br />
 
 		<label>
-			Email: <input
+			Email: <input class="input"
 				bind:value={() => scouterInfo.email,
 				(v) => {
 					scouterInfo.email = v;
@@ -40,7 +40,7 @@
 		<br />
 
 		<label>
-			Password: <input
+			Password: <input class="input"
 				bind:value={() => scouterInfo.password,
 				(v) => {
 					scouterInfo.password = v;

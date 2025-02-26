@@ -45,7 +45,7 @@
 <div class="footer">
 	<div class="footer--middle">
 		{#if !scouterState.isInOnlineMatch}
-			<button class="standard-button" onclick={() => (appState.matchState = "metadata")}>Previous (Metadata)</button>
+			<button class="standard-button footer__button" onclick={() => (appState.matchState = "metadata")}>Previous (Metadata)</button>
 		{/if}
 		<button class="standard-button footer__button" onclick={() => (appState.matchState = "autonomous")} disabled={matchData.prematch.startingLocation == null && !matchData.prematch.noShow}>
 			Next (Autonomous)

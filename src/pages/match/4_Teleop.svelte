@@ -17,7 +17,6 @@
 	<h2 class="subheader subheader--underline subheader--underline--green">Teleop</h2>
 
 	<Scoring isAutonomous={false} />
-	<br />
 </div>
 
 <div class="footer">
