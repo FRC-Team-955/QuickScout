@@ -109,7 +109,9 @@ export async function persistLeadState() {
 
 const connectedRef = ref(db, "connected");
 onValue(connectedRef, (snap) => {
-	queuingState.connected = snap.val() || {};
+	let newVal = snap.val() || {};
+	if (typeof newVal != "object") newVal = {};
+	queuingState.connected = newVal;
 	delete queuingState.connected["_"];
 	if (scouterInfo.scouterID.length <= 2) updateAsScouter();
 	else updateAsLead();
@@ -117,7 +119,9 @@ onValue(connectedRef, (snap) => {
 
 const queueRef = ref(db, "queue");
 onValue(queueRef, (snap) => {
-	queuingState.queue = snap.val() || {};
+	let newVal = snap.val() || {};
+	if (typeof newVal != "object") newVal = {};
+	queuingState.queue = newVal;
 	delete queuingState.queue["_"];
 	if (scouterInfo.scouterID.length <= 2) updateAsScouter();
 	else updateAsLead();
@@ -125,7 +129,9 @@ onValue(queueRef, (snap) => {
 
 const matchRef = ref(db, "match");
 onValue(matchRef, (snap) => {
-	queuingState.match = snap.val() || {};
+	let newVal = snap.val() || {};
+	if (typeof newVal != "object") newVal = {};
+	queuingState.match = newVal;
 	delete queuingState.match["_"];
 	queuingState.match.matchRunning = queuingState.match.matchRunning || false;
 	queuingState.match.matchEnded = queuingState.match.matchEnded || false;

@@ -3,7 +3,7 @@
 	import { matchData, appState } from "../../state.svelte";
 	import ReturnToHome from "./ReturnToHome.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
-	import Header from "./Header.svelte";
+	import MatchHeader from "./MatchHeader.svelte";
 </script>
 
 <div class="header">
@@ -12,7 +12,7 @@
 </div>
 
 <div class="contents">
-	<Header />
+	<MatchHeader />
 
 	<h2>Teleop</h2>
 
