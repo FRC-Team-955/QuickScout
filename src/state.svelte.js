@@ -3,13 +3,14 @@ const emailKey = "email";
 const passwordKey = "password";
 
 export let scouterInfo = $state({
-	scouterID: localStorage.getItem(scouterIDKey) || "",
+	//scouterID: localStorage.getItem(scouterIDKey) || "",
+	scouterID: "A1",
 	email: localStorage.getItem(emailKey) || "",
 	password: localStorage.getItem(passwordKey) || "",
 });
 
 export function persistScouterInfo() {
-	localStorage.setItem(scouterIDKey, scouterInfo.scouterID);
+	//localStorage.setItem(scouterIDKey, scouterInfo.scouterID);
 	localStorage.setItem(emailKey, scouterInfo.email);
 	localStorage.setItem(passwordKey, scouterInfo.password);
 }
