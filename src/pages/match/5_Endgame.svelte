@@ -18,7 +18,7 @@
 
 	<label>
 		Barge:
-		<select bind:value={matchData.endgame.barge}>
+		<select class="input" bind:value={matchData.endgame.barge}>
 			<option value="none">None</option>
 			<option value="park">Park</option>
 			<option value="shallowCage">Shallow cage climb</option>

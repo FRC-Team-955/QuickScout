@@ -18,13 +18,12 @@
 
 	<div class="subheader subheader--underline subheader--underline--green">Prematch</div>
 
-	<label>No show: <input bind:checked={matchData.prematch.noShow} type="checkbox" /></label>
-	<br />
-
 	{#if !matchData.prematch.noShow}
+		<button class="standard-button" onclick={() => matchData.prematch.noShow = !matchData.prematch.noShow}>&#x2715; No Show?</button>
+		<br />
 		<label>
 			Starting position:
-			<select bind:value={matchData.prematch.startingLocation}>
+			<select class="input" bind:value={matchData.prematch.startingLocation}>
 				<option value="bargeSide">Barge-side</option>
 				<option value="center">Center</option>
 				<option value="processorSide">Processor-side</option>
@@ -33,6 +32,8 @@
 		<br />
 		<img style="max-width:50%" src={matchData.metadata.alliance == "blue" ? startingPositionBlue : startingPositionRed} alt="Field with starting locations indicated" />
 		<br />
+	{:else}
+		<button class="standard-button standard-button--danger" onclick={() => matchData.prematch.noShow = !matchData.prematch.noShow}>&#x2714; No Show?</button>
 	{/if}
 
 	<style>

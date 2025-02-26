@@ -14,14 +14,23 @@
 	<MatchHeader />
 
 	<h2 class="subheader subheader--underline subheader--underline--green">Postmatch</h2>
-
-	<label>Dead: <input bind:checked={matchData.postmatch.dead} type="checkbox" /></label>
+	{#if !matchData.postmatch.dead}
+		<button class="standard-button standard-button--danger" onclick={() => matchData.postmatch.dead = true}>&#x2715; Dead?</button>
+	{:else}
+		<button class="standard-button standard-button--success" onclick={() => matchData.postmatch.dead = false}>&#x2714; Dead?</button>
+	{/if}
 	<br />
-
-	<label>Tipped over: <input bind:checked={matchData.postmatch.tippedOver} type="checkbox" /></label>
+	{#if !matchData.postmatch.tippedOver}
+		<button class="standard-button standard-button--danger" onclick={() => matchData.postmatch.tippedOver = true}>&#x2715; Tipped Over?</button>
+	{:else}
+		<button class="standard-button standard-button--success" onclick={() => matchData.postmatch.tippedOver = false}>&#x2714; Tipped Over?</button>
+	{/if}
 	<br />
-
-	<label>Yellow/red card: <input bind:checked={matchData.postmatch.card} type="checkbox" /></label>
+	{#if !matchData.postmatch.card}
+		<button class="standard-button standard-button--danger" onclick={() => matchData.postmatch.card = true}>&#x2715; Yellow/red card?</button>
+	{:else}
+		<button class="standard-button standard-button--success" onclick={() => matchData.postmatch.card = false}>&#x2714; Yellow/red card?</button>
+	{/if}
 	<br />
 </div>
 

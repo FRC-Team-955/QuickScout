@@ -16,7 +16,12 @@
 
 	<h2 class="subheader subheader--underline subheader--underline--green">Autonomous</h2>
 
-	<label>Left starting line: <input bind:checked={matchData.autonomous.leave} type="checkbox" /></label>
+	
+	{#if !matchData.autonomous.leave}
+		<button class="standard-button standard-button--danger" onclick={() => matchData.autonomous.leave = true}>&#x2715; Left Starting Line</button>
+	{:else}
+		<button class="standard-button standard-button--success" onclick={() => matchData.autonomous.leave = false}>&#x2714; Left Starting Line</button>
+	{/if}
 	<br />
 
 	<Scoring isAutonomous={true} />
