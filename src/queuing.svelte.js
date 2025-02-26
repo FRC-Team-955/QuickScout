@@ -237,3 +237,16 @@ export function forceEndMatch() {
 	queuingState.match.matchRunning = false;
 	set(matchRef, queuingState.match);
 }
+
+export function exportData(data, onSuccess, onError) {
+	set(ref(db, `collectedMatchData/${matchData.metadata.matchNumber}/${matchData.metadata.teamNumber}`), data)
+		.then(() => onSuccess())
+		.catch(() => onError());
+}
+
+export function resetMatchScouter() {
+	scouterState.isInOnlineMatch = false;
+	scouterState.matchEndSignaled = false;
+	persistScouterState();
+	setTimeout(() => location.reload(), 300);
+}
