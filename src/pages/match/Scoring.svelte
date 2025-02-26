@@ -63,6 +63,20 @@
 	}
 </script>
 
+Coral Scored: {matchData.autonomous.coral.l1
+	+matchData.autonomous.coral.l2
+	+matchData.autonomous.coral.l3
+	+matchData.autonomous.coral.l4
+	+matchData.teleop.coral.l1
+	+matchData.teleop.coral.l2
+	+matchData.teleop.coral.l3
+	+matchData.teleop.coral.l4
+},
+Algae Scored: {matchData.autonomous.algae.net
+	+matchData.autonomous.algae.processor
+	+matchData.teleop.algae.net
+	+matchData.teleop.algae.processor
+}
 <div class="scoring-grid full-height">
 	{#if !scoringState.hasCoral}
 		<div><button class="standard-button scoring-grid__button" onclick={coralStationPickup}>Coral taken from station</button></div>
