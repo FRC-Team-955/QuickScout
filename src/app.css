@@ -80,25 +80,20 @@ body {
 /* Header */
 
 .header {
-    background-color: #ffffff;
+	background-color: #ffffff;
 	height: 100px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
 	display: block;
-    z-index: 4;
+	z-index: 4;
 	margin: 0;
 	max-width: 100%;
 	border-bottom-width: 10px;
 	border-bottom-style: solid;
 	border-image-slice: 1;
-	border-image-source: 
-		linear-gradient(
-			to right, 
-			rgb(158, 0, 0), 
-			rgba(56, 38, 255,0)
-		);
+	border-image-source: linear-gradient(to right, rgb(158, 0, 0), rgba(56, 38, 255, 0));
 }
 
 .header__img {
@@ -129,25 +124,20 @@ body {
 }
 
 .footer {
-    background-color: #ffffff;
+	background-color: #ffffff;
 	height: 100px;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
 	display: block;
-    z-index: 4;
+	z-index: 4;
 	margin: 0;
 	max-width: 100%;
 	border-top-width: 10px;
 	border-top-style: solid;
 	border-image-slice: 1;
-	border-image-source: 
-		linear-gradient(
-			to left, 
-			rgb(6, 14, 179), 
-			rgba(56, 38, 255,0)
-		);
+	border-image-source: linear-gradient(to left, rgb(6, 14, 179), rgba(56, 38, 255, 0));
 }
 
 .footer--middle {
@@ -202,22 +192,22 @@ body {
 
 .input {
 	padding: 5px 12px;
-    font-size: 14px;
-    line-height: 20px;
-    color: var(--fgColor-default, var(--color-fg-default));
-    vertical-align: middle;
-    background-color: var(--bgColor-default, var(--color-canvas-default));
-    background-repeat: no-repeat;
-    background-position: right 8px center;
-    border: 1px solid rgb(142, 142, 142);
-    border-radius: 6px;
-    box-shadow: var(--shadow-inset, var(--color-primer-shadow-inset));
+	font-size: 14px;
+	line-height: 20px;
+	color: var(--fgColor-default, var(--color-fg-default));
+	vertical-align: middle;
+	background-color: var(--bgColor-default, var(--color-canvas-default));
+	background-repeat: no-repeat;
+	background-position: right 8px center;
+	border: 1px solid rgb(142, 142, 142);
+	border-radius: 6px;
+	box-shadow: var(--shadow-inset, var(--color-primer-shadow-inset));
 	margin-bottom: 7px;
 }
 .input--disable-spinner::-webkit-outer-spin-button,
 .input--disable-spinner::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 .scoring-grid {

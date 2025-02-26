@@ -1,5 +1,5 @@
 <script>
-	import { leadState, queuingState, removeFromQueue, serverState, startMatch } from "../../../queuing.svelte";
+	import { forceEndMatch, leadState, queuingState, removeFromQueue, serverState, signalMatchEnded, startMatch } from "../../../queuing.svelte";
 	import { scouterInfo, persistScouterInfo, appState, setUIState } from "../../../state.svelte";
 </script>
 
@@ -54,18 +54,19 @@
 		<label>Blue 3: <input bind:value={() => leadState.matchConfig.blue3, (v) => (leadState.matchConfig.blue3 = Number.parseInt((v || "").toString()))} type="number" /></label>
 		<br />
 
-		<button
-			class="standard-button"
-			onclick={() => startMatch()}
-			disabled={Number.isNaN(leadState.matchConfig.matchNumber) ||
-				Number.isNaN(leadState.matchConfig.red1) ||
-				Number.isNaN(leadState.matchConfig.red2) ||
-				Number.isNaN(leadState.matchConfig.red3) ||
-				Number.isNaN(leadState.matchConfig.blue1) ||
-				Number.isNaN(leadState.matchConfig.blue2) ||
-				Number.isNaN(leadState.matchConfig.blue3)}>Start match with top six in queue</button
-		>
-		<br />
+		<div>
+			<button
+				class="standard-button"
+				onclick={() => startMatch()}
+				disabled={Number.isNaN(leadState.matchConfig.matchNumber) ||
+					Number.isNaN(leadState.matchConfig.red1) ||
+					Number.isNaN(leadState.matchConfig.red2) ||
+					Number.isNaN(leadState.matchConfig.red3) ||
+					Number.isNaN(leadState.matchConfig.blue1) ||
+					Number.isNaN(leadState.matchConfig.blue2) ||
+					Number.isNaN(leadState.matchConfig.blue3)}>Start match with top six in queue</button
+			>
+		</div>
 	{:else}
 		<h2>Match Info</h2>
 		<p>Match Number: {queuingState.match.matchNumber}</p>
@@ -76,5 +77,23 @@
 				]})
 			</p>
 		{/each}
+
+		{#if queuingState.match.matchEnded}
+			<h2>Remaining Data</h2>
+			<!-- {#each Object.keys(queuingState.match.objectiveScouters) as scouter}
+				<p>
+					{leadState.scouterIDMapping[scouter] || "Unknown"} (ID: {scouter}) - {queuingState.match.objectiveScouters[scouter]} ({queuingState.match.teamAllianceColors[
+						queuingState.match.objectiveScouters[scouter]
+					]})
+				</p>
+			{/each} -->
+			<div>
+				<button class="standard-button standard-button--danger" onclick={() => forceEndMatch()}>Force end match (not all scouters have submitted results)</button>
+			</div>
+		{:else}
+			<div>
+				<button class="standard-button" onclick={() => signalMatchEnded()}>Signal match is ended and allow scouters to submit results</button>
+			</div>
+		{/if}
 	{/if}
 {/if}

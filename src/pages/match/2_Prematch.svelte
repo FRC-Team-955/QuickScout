@@ -4,7 +4,7 @@
 	import startingPositionBlue from "../../assets/starting-position-blue.png";
 	import ReturnToHome from "./ReturnToHome.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
-	import { queuingState, serverState } from "../../queuing.svelte";
+	import { queuingState, scouterState, serverState } from "../../queuing.svelte";
 	import MatchHeader from "./MatchHeader.svelte";
 </script>
 
@@ -44,7 +44,7 @@
 
 <div class="footer">
 	<div class="footer--middle">
-		{#if !serverState.connected}
+		{#if !scouterState.isInOnlineMatch}
 			<button class="standard-button" onclick={() => (appState.matchState = "metadata")}>Previous (Metadata)</button>
 		{/if}
 		<button class="standard-button footer__button" onclick={() => (appState.matchState = "autonomous")} disabled={matchData.prematch.startingLocation == null && !matchData.prematch.noShow}>

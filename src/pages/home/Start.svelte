@@ -7,9 +7,12 @@
 	import textlogo from "../../assets/text-logo-removebg.png";
 </script>
 
-<div class="contents">
+<div class="header">
 	<img src={textlogo} class="header__img" alt="QuickScout" />
-	<h3 style="margin-block-start: 0">Made by FRC Teams 749, 955, 997</h3>
+</div>
+
+<div class="contents">
+	<h3>Made by FRC Teams 749, 955, 997</h3>
 
 	<button class="standard-button" onclick={() => (appState.homeState = "setup")}>Setup</button>
 

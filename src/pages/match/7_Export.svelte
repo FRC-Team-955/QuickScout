@@ -4,7 +4,7 @@
 	import { scouterInfo, matchData, appState } from "../../state.svelte";
 	import ReturnToHome from "./ReturnToHome.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
-	import { queuingState } from "../../queuing.svelte";
+	import { queuingState, scouterState } from "../../queuing.svelte";
 	import MatchHeader from "./MatchHeader.svelte";
 
 	const EXPORTSTATES = Object.freeze({
@@ -61,7 +61,6 @@
 	{:else if exportState == EXPORTSTATES.CHOSE_ONLINE}
 		<p>Sorry, not supported yet</p>
 		<br />
-		<button class="standard-button" onclick={() => (exportState = EXPORTSTATES.NOT_CHOSEN)}>Back</button>
 	{:else}
 		<button class="standard-button" onclick={() => (exportState = EXPORTSTATES.CHOSE_ONLINE)}>Export via the internet</button>
 		<br />
@@ -73,7 +72,7 @@
 <div class="footer">
 	<div class="footer--middle">
 		<button class="standard-button footer__button" onclick={() => (appState.matchState = "postmatch")}>Previous (Postmatch)</button>
-		{#if !queuingState.match.matchRunning}
+		{#if !scouterState.isInOnlineMatch}
 			<button class="standard-button standard-button--danger footer__button" onclick={() => location.reload()}>New match (ALL DATA WILL BE RESET!)</button>
 		{/if}
 	</div>

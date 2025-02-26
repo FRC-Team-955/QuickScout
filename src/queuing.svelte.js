@@ -64,9 +64,6 @@ export async function signIn() {
 	}
 }
 
-const collectedMatchDataKey = "collectedMatchData";
-const scouterIDMappingKey = "scouterIDMapping";
-
 export let queuingState = $state({
 	/** @type {{ [id: string]: boolean }} */
 	connected: {},
@@ -86,6 +83,8 @@ export let queuingState = $state({
 	},
 });
 
+const scouterIDMappingKey = "scouterIDMapping";
+
 export let leadState = $state({
 	matchConfig: {
 		matchNumber: NaN,
@@ -96,15 +95,25 @@ export let leadState = $state({
 		blue2: NaN,
 		blue3: NaN,
 	},
-	/** @type {[typeof matchData | { metadata: { scouterID: string } }]} */
-	collectedMatchData: JSON.parse(localStorage.getItem(collectedMatchDataKey)) || [],
 	/** @type {{ [id: string]: string }} */
 	scouterIDMapping: JSON.parse(localStorage.getItem(scouterIDMappingKey)) || {},
 });
 
-export async function persistLeadState() {
-	localStorage.setItem(collectedMatchDataKey, JSON.stringify(leadState.collectedMatchData));
+export function persistLeadState() {
 	localStorage.setItem(scouterIDMappingKey, JSON.stringify(leadState.scouterIDMapping));
+}
+
+const isInMatchKey = "isInMatch";
+const matchEndSignaledKey = "matchEndSignaled";
+
+export let scouterState = $state({
+	isInOnlineMatch: JSON.parse(localStorage.getItem(isInMatchKey)) || false,
+	matchEndSignaled: JSON.parse(localStorage.getItem(matchEndSignaledKey)) || false,
+});
+
+export function persistScouterState() {
+	localStorage.setItem(isInMatchKey, JSON.stringify(scouterState.isInOnlineMatch));
+	localStorage.setItem(matchEndSignaledKey, JSON.stringify(scouterState.matchEndSignaled));
 }
 
 const connectedRef = ref(db, "connected");
@@ -172,12 +181,17 @@ function updateAsScouter() {
 
 	// If we're in the current match, start scouting
 	if (queuingState.match.matchRunning) {
-		if (scouterInfo.scouterID in queuingState.match.objectiveScouters && appState.uiState != "match") {
-			matchData.metadata.matchNumber = queuingState.match.matchNumber;
-			matchData.metadata.teamNumber = queuingState.match.objectiveScouters[scouterInfo.scouterID];
-			matchData.metadata.alliance = queuingState.match.teamAllianceColors[matchData.metadata.teamNumber];
-			appState.matchState = "prematch";
-			appState.uiState = "match";
+		if (scouterInfo.scouterID in queuingState.match.objectiveScouters) {
+			if (appState.uiState != "match") {
+				scouterState.isInOnlineMatch = true;
+				matchData.metadata.matchNumber = queuingState.match.matchNumber;
+				matchData.metadata.teamNumber = queuingState.match.objectiveScouters[scouterInfo.scouterID];
+				matchData.metadata.alliance = queuingState.match.teamAllianceColors[matchData.metadata.teamNumber];
+				appState.matchState = "prematch";
+				appState.uiState = "match";
+			}
+			scouterState.matchEndSignaled = queuingState.match.matchEnded;
+			persistScouterState();
 		}
 	}
 }
@@ -209,11 +223,17 @@ export function startMatch() {
 		set(ref(db, `queue/${id}`), null);
 	}
 
+	queuingState.match.matchEnded = false;
 	queuingState.match.matchRunning = true;
 	set(matchRef, queuingState.match);
 }
 
 export function signalMatchEnded() {
 	queuingState.match.matchEnded = true;
+	set(matchRef, queuingState.match);
+}
+
+export function forceEndMatch() {
+	queuingState.match.matchRunning = false;
 	set(matchRef, queuingState.match);
 }
