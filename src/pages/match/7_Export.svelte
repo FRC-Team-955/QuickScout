@@ -51,7 +51,7 @@
 <div class="contents">
 	<MatchHeader />
 
-	<h2>Export match</h2>
+	<h2 class="subheader subheader--underline subheader--underline--green">Export match</h2>
 
 	{#if exportState == EXPORTSTATES.CHOSE_QRCODE}
 		{@html svg}
@@ -67,10 +67,14 @@
 		<br />
 		<button class="standard-button" onclick={() => (exportState = EXPORTSTATES.CHOSE_QRCODE)}>Export via QR code</button>
 		<br />
-		<br />
-		<button class="standard-button" onclick={() => (appState.matchState = "postmatch")}>Previous (Postmatch)</button>
-		{#if !queuingState.match.matchRunning}
-			<button class="standard-button standard-button--danger" onclick={() => location.reload()}>New match (ALL DATA WILL BE RESET!)</button>
-		{/if}
 	{/if}
+</div>
+
+<div class="footer">
+	<div class="footer--middle">
+		<button class="standard-button footer__button" onclick={() => (appState.matchState = "postmatch")}>Previous (Postmatch)</button>
+		{#if !queuingState.match.matchRunning}
+			<button class="standard-button standard-button--danger footer__button" onclick={() => location.reload()}>New match (ALL DATA WILL BE RESET!)</button>
+		{/if}
+	</div>
 </div>

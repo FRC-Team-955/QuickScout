@@ -13,7 +13,7 @@
 <div class="contents">
 	<MatchHeader />
 
-	<h2>Postmatch</h2>
+	<h2 class="subheader subheader--underline subheader--underline--green">Postmatch</h2>
 
 	<label>Dead: <input bind:checked={matchData.postmatch.dead} type="checkbox" /></label>
 	<br />
@@ -23,8 +23,11 @@
 
 	<label>Yellow/red card: <input bind:checked={matchData.postmatch.card} type="checkbox" /></label>
 	<br />
+</div>
 
-	<br />
-	<button class="standard-button" onclick={() => (appState.matchState = "endgame")}>Previous (Endgame)</button>
-	<button class="standard-button" onclick={() => (appState.matchState = "export")}>Finish and Export</button>
+<div class="footer">
+	<div class="footer--middle">
+		<button class="standard-button footer__button" onclick={() => (appState.matchState = "endgame")}>Previous (Endgame)</button>
+		<button class="standard-button footer__button" onclick={() => (appState.matchState = "export")}>Finish and Export</button>
+	</div>
 </div>

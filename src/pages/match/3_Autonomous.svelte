@@ -14,7 +14,7 @@
 <div class="contents">
 	<MatchHeader />
 
-	<h2>Autonomous</h2>
+	<h2 class="subheader subheader--underline subheader--underline--green">Autonomous</h2>
 
 	<label>Left starting line: <input bind:checked={matchData.autonomous.leave} type="checkbox" /></label>
 	<br />

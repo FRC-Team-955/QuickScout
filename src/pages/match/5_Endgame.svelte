@@ -14,7 +14,7 @@
 <div class="contents">
 	<MatchHeader />
 
-	<h2>Endgame</h2>
+	<h2 class="subheader subheader--underline subheader--underline--green">Endgame</h2>
 
 	<label>
 		Barge:
@@ -28,7 +28,11 @@
 	<br />
 	<img src={cages} style="max-width: 50%" alt="Barge with cage levels indicated" />
 	<br />
-	<br />
-	<button class="standard-button" onclick={() => (appState.matchState = "teleop")}>Previous (Teleop)</button>
-	<button class="standard-button" onclick={() => (appState.matchState = "postmatch")} disabled={matchData.endgame.barge == null}> Next (Postmatch) </button>
+</div>
+
+<div class="footer">
+	<div class="footer--middle">
+		<button class="standard-button footer__button" onclick={() => (appState.matchState = "teleop")}>Previous (Teleop)</button>
+		<button class="standard-button footer__button" onclick={() => (appState.matchState = "postmatch")} disabled={matchData.endgame.barge == null}> Next (Postmatch) </button>
+	</div>
 </div>

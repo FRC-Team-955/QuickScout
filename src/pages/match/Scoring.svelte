@@ -69,7 +69,7 @@
 		<div><button class="standard-button scoring-grid__button" onclick={coralGroundIntake}>Coral taken from ground</button></div>
 		<div>
 			{#if isAutonomous && !matchData.autonomous.coral.preloaded}
-			<button class="standard-button scoring-grid__button" onclick={coralPreload}>Coral preloaded</button>
+				<button class="standard-button scoring-grid__button" onclick={coralPreload}>Coral preloaded</button>
 			{/if}
 		</div>
 		<div></div>

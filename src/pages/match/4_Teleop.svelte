@@ -14,12 +14,15 @@
 <div class="contents">
 	<MatchHeader />
 
-	<h2>Teleop</h2>
+	<h2 class="subheader subheader--underline subheader--underline--green">Teleop</h2>
 
 	<Scoring isAutonomous={false} />
 	<br />
+</div>
 
-	<br />
-	<button class="standard-button" onclick={() => (appState.matchState = "autonomous")}>Previous (Autonomous)</button>
-	<button class="standard-button" onclick={() => (appState.matchState = "endgame")}>Next (Endgame)</button>
+<div class="footer">
+	<div class="footer--middle">
+		<button class="standard-button footer__button" onclick={() => (appState.matchState = "autonomous")}>Previous (Autonomous)</button>
+		<button class="standard-button footer__button" onclick={() => (appState.matchState = "endgame")}>Next (Endgame)</button>
+	</div>
 </div>

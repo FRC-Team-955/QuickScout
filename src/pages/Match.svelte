@@ -16,7 +16,7 @@
 	<Pregame />
 {:else if appState.matchState == "autonomous"}
 	<Autonomous />
-{:else if appState.matchState =="teleop"}
+{:else if appState.matchState == "teleop"}
 	<Teleop />
 {:else if appState.matchState == "endgame"}
 	<Endgame />
