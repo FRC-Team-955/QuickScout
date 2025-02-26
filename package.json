@@ -6,10 +6,12 @@
 	"scripts": {
 		"dev": "vite --host --port 8888",
 		"build": "vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+	    "generate-pwa-assets": "pwa-assets-generator"
 	},
 	"devDependencies": {
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@vite-pwa/assets-generator": "^0.2.6",
 		"svelte": "^5.15.0",
 		"vite": "^6.1.0",
 		"vite-plugin-pwa": "^0.21.1"

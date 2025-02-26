@@ -38,13 +38,13 @@ export default defineConfig({
 				orientation: "portrait",
 				icons: [
 					{
-						"src": "https://www.pwabuilder.com/assets/icons/icon_512.png",
+						"src": "src/assets/pwa-512x512.png",
 						"sizes": "512x512",
 						"type": "image/png",
 						"purpose": "maskable"
 					},
 					{
-						"src": "https://www.pwabuilder.com/assets/icons/icon_192.png",
+						"src": "src/assets/pwa-192x192.png",
 						"sizes": "192x192",
 						"type": "image/png",
 						"purpose": "any"
