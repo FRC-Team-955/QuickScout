@@ -161,6 +161,7 @@ body {
 .contents {
 	margin-top: 25px;
 	margin-bottom: 25px;
+	padding-bottom: 125px;
 	position: relative;
 	top: 100px;
 	bottom: 100px;
