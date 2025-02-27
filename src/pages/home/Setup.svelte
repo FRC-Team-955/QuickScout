@@ -11,7 +11,7 @@
 
 <div class="contents">
 	<h1>Setup</h1>
-<!--
+
 	<label>
 		Scouter ID: <input class="input"
 			bind:value={() => scouterInfo.scouterID,
@@ -24,7 +24,7 @@
 			}}
 		/>
 	</label>
--->
+
 	{#if scouterInfo.scouterID == "LEAD"}
 		<br />
 
