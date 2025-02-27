@@ -4,7 +4,7 @@
 	import startingPositionBlue from "../../assets/starting-position-blue.png";
 	import ReturnToHome from "./ReturnToHome.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
-	import { queuingState, scouterState, serverState } from "../../queuing.svelte";
+	import { scouterState } from "../../queuing/scouter.svelte";
 	import MatchHeader from "./MatchHeader.svelte";
 </script>
 
@@ -19,7 +19,7 @@
 	<div class="subheader subheader--underline subheader--underline--green">Prematch</div>
 
 	{#if !matchData.prematch.noShow}
-		<button class="standard-button" onclick={() => matchData.prematch.noShow = !matchData.prematch.noShow}>&#x2715; No Show?</button>
+		<button class="standard-button" onclick={() => (matchData.prematch.noShow = !matchData.prematch.noShow)}>&#x2715; No Show?</button>
 		<br />
 		<label>
 			Starting position:
@@ -33,7 +33,7 @@
 		<img style="max-width:50%" src={matchData.metadata.alliance == "blue" ? startingPositionBlue : startingPositionRed} alt="Field with starting locations indicated" />
 		<br />
 	{:else}
-		<button class="standard-button standard-button--danger" onclick={() => matchData.prematch.noShow = !matchData.prematch.noShow}>&#x2714; No Show?</button>
+		<button class="standard-button standard-button--danger" onclick={() => (matchData.prematch.noShow = !matchData.prematch.noShow)}>&#x2714; No Show?</button>
 	{/if}
 
 	<style>

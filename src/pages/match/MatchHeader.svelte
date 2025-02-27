@@ -1,5 +1,5 @@
 <script>
-	import { queuingState, scouterState } from "../../queuing.svelte";
+	import { scouterState } from "../../queuing/scouter.svelte";
 	import { matchData } from "../../state.svelte";
 </script>
 

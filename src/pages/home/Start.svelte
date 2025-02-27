@@ -1,5 +1,5 @@
 <script>
-	import { serverState } from "../../queuing.svelte";
+	import { serverState } from "../../queuing/shared.svelte";
 	import { scouterInfo, persistScouterInfo, appState, setUIState } from "../../state.svelte";
 	import Lead from "./start/Lead.svelte";
 	import Scouter from "./start/Scouter.svelte";

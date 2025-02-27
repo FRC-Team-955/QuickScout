@@ -1,6 +1,6 @@
 <script>
-	import { forceEndMatch, leadState, queuingState, removeFromQueue, serverState, signalMatchEnded, startMatch } from "../../../queuing.svelte";
-	import { scouterInfo, persistScouterInfo, appState, setUIState } from "../../../state.svelte";
+	import { forceEndMatch, leadState, signalMatchEnded, startMatch } from "../../../queuing/lead.svelte";
+	import { queuingState, serverState, removeFromQueue } from "../../../queuing/shared.svelte";
 </script>
 
 {#if !serverState.connected}
@@ -39,19 +39,61 @@
 
 	{#if !queuingState.match.matchRunning}
 		<h2>Match Configuration</h2>
-		<label>Match Number: <input bind:value={() => leadState.matchConfig.matchNumber, (v) => (leadState.matchConfig.matchNumber = Number.parseInt((v || "").toString()))} type="number" /></label>
+		<label
+			>Match Number: <input
+				bind:value={() => leadState.matchConfig.matchNumber,
+				(v) => (leadState.matchConfig.matchNumber = Number.parseInt((v || "").toString()))}
+				type="number"
+			/></label
+		>
 		<br />
-		<label>Red 1: <input bind:value={() => leadState.matchConfig.red1, (v) => (leadState.matchConfig.red1 = Number.parseInt((v || "").toString()))} type="number" /></label>
+		<label
+			>Red 1: <input
+				bind:value={() => leadState.matchConfig.red1,
+				(v) => (leadState.matchConfig.red1 = Number.parseInt((v || "").toString()))}
+				type="number"
+			/></label
+		>
 		<br />
-		<label>Red 2: <input bind:value={() => leadState.matchConfig.red2, (v) => (leadState.matchConfig.red2 = Number.parseInt((v || "").toString()))} type="number" /></label>
+		<label
+			>Red 2: <input
+				bind:value={() => leadState.matchConfig.red2,
+				(v) => (leadState.matchConfig.red2 = Number.parseInt((v || "").toString()))}
+				type="number"
+			/></label
+		>
 		<br />
-		<label>Red 3: <input bind:value={() => leadState.matchConfig.red3, (v) => (leadState.matchConfig.red3 = Number.parseInt((v || "").toString()))} type="number" /></label>
+		<label
+			>Red 3: <input
+				bind:value={() => leadState.matchConfig.red3,
+				(v) => (leadState.matchConfig.red3 = Number.parseInt((v || "").toString()))}
+				type="number"
+			/></label
+		>
 		<br />
-		<label>Blue 1: <input bind:value={() => leadState.matchConfig.blue1, (v) => (leadState.matchConfig.blue1 = Number.parseInt((v || "").toString()))} type="number" /></label>
+		<label
+			>Blue 1: <input
+				bind:value={() => leadState.matchConfig.blue1,
+				(v) => (leadState.matchConfig.blue1 = Number.parseInt((v || "").toString()))}
+				type="number"
+			/></label
+		>
 		<br />
-		<label>Blue 2: <input bind:value={() => leadState.matchConfig.blue2, (v) => (leadState.matchConfig.blue2 = Number.parseInt((v || "").toString()))} type="number" /></label>
+		<label
+			>Blue 2: <input
+				bind:value={() => leadState.matchConfig.blue2,
+				(v) => (leadState.matchConfig.blue2 = Number.parseInt((v || "").toString()))}
+				type="number"
+			/></label
+		>
 		<br />
-		<label>Blue 3: <input bind:value={() => leadState.matchConfig.blue3, (v) => (leadState.matchConfig.blue3 = Number.parseInt((v || "").toString()))} type="number" /></label>
+		<label
+			>Blue 3: <input
+				bind:value={() => leadState.matchConfig.blue3,
+				(v) => (leadState.matchConfig.blue3 = Number.parseInt((v || "").toString()))}
+				type="number"
+			/></label
+		>
 		<br />
 
 		<div>
@@ -72,7 +114,8 @@
 		<p>Match Number: {queuingState.match.matchNumber}</p>
 		{#each Object.keys(queuingState.match.objectiveScouters) as scouter}
 			<p>
-				{leadState.scouterIDMapping[scouter] || "Unknown"} (ID: {scouter}) - {queuingState.match.objectiveScouters[scouter]} ({queuingState.match.teamAllianceColors[
+				{leadState.scouterIDMapping[scouter] || "Unknown"} (ID: {scouter}) - {queuingState.match
+					.objectiveScouters[scouter]} ({queuingState.match.teamAllianceColors[
 					queuingState.match.objectiveScouters[scouter]
 				]})
 			</p>
@@ -80,19 +123,26 @@
 
 		{#if queuingState.match.matchEnded}
 			<h2>Remaining Data</h2>
-			<!-- {#each Object.keys(queuingState.match.objectiveScouters) as scouter}
-				<p>
-					{leadState.scouterIDMapping[scouter] || "Unknown"} (ID: {scouter}) - {queuingState.match.objectiveScouters[scouter]} ({queuingState.match.teamAllianceColors[
-						queuingState.match.objectiveScouters[scouter]
-					]})
-				</p>
-			{/each} -->
+			{#each Object.keys(queuingState.match.objectiveScouters) as scouter}
+				{#if !(queuingState.match.matchNumber.toString() in leadState.collectedMatchData) || !(queuingState.match.objectiveScouters[scouter].toString() in leadState.collectedMatchData[queuingState.match.matchNumber.toString()])}
+					<p>
+						{leadState.scouterIDMapping[scouter] || "Unknown"} (ID: {scouter}) - {queuingState.match
+							.objectiveScouters[scouter]} ({queuingState.match.teamAllianceColors[
+							queuingState.match.objectiveScouters[scouter]
+						]})
+					</p>
+				{/if}
+			{/each}
 			<div>
-				<button class="standard-button standard-button--danger" onclick={() => forceEndMatch()}>Force end match (not all scouters have submitted results)</button>
+				<button class="standard-button standard-button--danger" onclick={() => forceEndMatch()}
+					>Force end match (not all scouters have submitted results)</button
+				>
 			</div>
 		{:else}
 			<div>
-				<button class="standard-button" onclick={() => signalMatchEnded()}>Signal match is ended and allow scouters to submit results</button>
+				<button class="standard-button" onclick={() => signalMatchEnded()}
+					>Signal match is ended and tell scouters to submit results</button
+				>
 			</div>
 		{/if}
 	{/if}

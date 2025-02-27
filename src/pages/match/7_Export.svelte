@@ -4,17 +4,19 @@
 	import { scouterInfo, matchData, appState } from "../../state.svelte";
 	import ReturnToHome from "./ReturnToHome.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
-	import { exportData, queuingState, resetMatchScouter, scouterState, serverState } from "../../queuing.svelte";
+	import { serverState } from "../../queuing/shared.svelte";
 	import MatchHeader from "./MatchHeader.svelte";
+	import { exportData, resetMatchScouter, scouterState } from "../../queuing/scouter.svelte";
 
 	function objectValuesDeep(object) {
 		let allValues = [];
 		for (const value of Object.values(object)) {
-			if (typeof value == "object") {
+			if (value == null) {
+				allValues.push("");
+			} else if (typeof value == "object") {
 				allValues = [...allValues, ...objectValuesDeep(value)];
 			} else {
-				if (value == null) allValues.push("");
-				else allValues.push(value);
+				allValues.push(value);
 			}
 		}
 		return allValues;

@@ -3,12 +3,22 @@
 	import Home from "./pages/Home.svelte";
 
 	import { scouterInfo, matchData, appState, scoringState } from "./state.svelte";
-	import { leadState, queuingState, serverState, signIn } from "./queuing.svelte";
+	import { queuingState, serverState } from "./queuing/shared.svelte";
+	import { tryToSignIn, leadState } from "./queuing/lead.svelte";
+	import { scouterState } from "./queuing/scouter.svelte";
 
-	$inspect(scouterInfo, matchData, appState, scoringState, queuingState, scoringState, serverState, leadState).with(console.debug);
+	$inspect(scouterInfo).with((...args) => console.debug("scouterInfo", ...args));
+	$inspect(matchData).with((...args) => console.debug("matchData", ...args));
+	$inspect(appState).with((...args) => console.debug("appState", ...args));
+	$inspect(scoringState).with((...args) => console.debug("scoringState", ...args));
+	$inspect(queuingState).with((...args) => console.debug("queuingState", ...args));
+	$inspect(scoringState).with((...args) => console.debug("scoringState", ...args));
+	$inspect(serverState).with((...args) => console.debug("serverState", ...args));
+	$inspect(leadState).with((...args) => console.debug("leadState", ...args));
+	$inspect(scouterState).with((...args) => console.debug("scouterState", ...args));
 
 	$effect(() => {
-		signIn();
+		tryToSignIn();
 	});
 </script>
 

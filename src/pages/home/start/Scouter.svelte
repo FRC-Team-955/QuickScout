@@ -1,5 +1,6 @@
 <script>
-	import { joinQueue, queuingState, removeFromQueue, serverState } from "../../../queuing.svelte";
+	import { joinQueue } from "../../../queuing/scouter.svelte";
+	import { queuingState, removeFromQueue, serverState } from "../../../queuing/shared.svelte";
 	import { scouterInfo, persistScouterInfo, appState, setUIState } from "../../../state.svelte";
 </script>
 

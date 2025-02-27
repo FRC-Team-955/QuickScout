@@ -1,8 +1,8 @@
 <script>
-	import { signIn as tryToSignIn } from "../../queuing.svelte";
 	import { scouterInfo, persistScouterInfo, appState } from "../../state.svelte";
 
 	import textlogo from "../../assets/text-logo-removebg.png";
+	import { tryToSignIn } from "../../queuing/lead.svelte";
 </script>
 
 <div class="header">
@@ -13,7 +13,8 @@
 	<h1>Setup</h1>
 
 	<label>
-		Scouter ID: <input class="input"
+		Scouter ID: <input
+			class="input"
 			bind:value={() => scouterInfo.scouterID,
 			(v) => {
 				scouterInfo.scouterID = v.toUpperCase();
@@ -29,7 +30,8 @@
 		<br />
 
 		<label>
-			Email: <input class="input"
+			Email: <input
+				class="input"
 				bind:value={() => scouterInfo.email,
 				(v) => {
 					scouterInfo.email = v;
@@ -40,7 +42,8 @@
 		<br />
 
 		<label>
-			Password: <input class="input"
+			Password: <input
+				class="input"
 				bind:value={() => scouterInfo.password,
 				(v) => {
 					scouterInfo.password = v;
