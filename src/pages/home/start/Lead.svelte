@@ -58,6 +58,9 @@
 
 {#snippet scouter(id)}
 	{leadState.scouterIDMapping[id] || "Unknown"} (ID: {id})
+	{#if !(id in queuingState.connected) || !queuingState.connected[id]}
+		<strong style="color: red">NOT CONNECTED</strong>
+	{/if}
 {/snippet}
 
 {#if serverState.connected && serverState.signedIn}
@@ -73,9 +76,6 @@
 	{#each Object.keys(queuingState.queue).sort((a, b) => queuingState.queue[a] - queuingState.queue[b]) as scouterID, index}
 		<p>
 			{index + 1}. {@render scouter(scouterID)}
-			{#if !(scouterID in queuingState.connected) || !queuingState.connected[scouterID]}
-				<strong style="color: red">NOT CONNECTED</strong>
-			{/if}
 			<Button onclick={() => removeFromQueue(scouterID)}>Remove from queue</Button>
 		</p>
 	{/each}
@@ -138,6 +138,12 @@
 			/></label
 		>
 		<br />
+
+		{#if leadState.matchConfig.matchNumber.toString() in leadState.collectedMatchData}
+			<p style="color: orange">
+				<strong>There is already data for this match number. Things will most likely break.</strong>
+			</p>
+		{/if}
 
 		<div>
 			<Button
