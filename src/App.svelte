@@ -20,6 +20,16 @@
 	$effect(() => {
 		tryToSignIn();
 	});
+
+	// Try to update the service worker
+	if ("serviceWorker" in navigator) {
+		navigator.serviceWorker.getRegistrations().then((registrations) => {
+			console.log("Updating service worker");
+			for (const registration of registrations) registration.update();
+		});
+	} else {
+		console.log("Service worker not available");
+	}
 </script>
 
 <main>
