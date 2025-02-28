@@ -44,6 +44,10 @@ Try to not have to nest multiple elemtns/modifiers (e.g. .block_elem1_elem2 is b
 	cursor: pointer;
 	transition: border-color 0.25s;
 	margin: 4px;
+	color: rgba(0, 0, 0, 0.87);
+}
+.standard-button:disabled {
+	color: rgba(120, 120, 120, 0.87);
 }
 .standard-button:hover {
 	border-color: #646cff;
@@ -85,7 +89,7 @@ body {
 
 .header {
 	background-color: #ffffff;
-	height: 100px;
+	height: 10%;
 	width: 100%;
 	position: fixed;
 	top: 0;
@@ -119,7 +123,7 @@ body {
 
 .header__return-button {
 	width: 175px;
-	max-width: 25%;
+	max-width: 50%;
 	overflow: hidden;
 	display: inline-block;
 	top: 50%;
@@ -129,7 +133,7 @@ body {
 
 .footer {
 	background-color: #ffffff;
-	height: 100px;
+	height: 15%;
 	width: 100%;
 	position: fixed;
 	bottom: 0;
@@ -155,7 +159,7 @@ body {
 	display: inline-block;
 	top: 50%;
 	bottom: 50%;
-	transform: translate(0%, 50%);
+	/* transform: translate(0%, 50%); */
 }
 
 .contents {

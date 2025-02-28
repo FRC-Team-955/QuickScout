@@ -18,7 +18,7 @@
 			setTimeout(() => {
 				undoIcon = null;
 				undoCooldown = false;
-			}, 500);
+			}, 250);
 		}
 	}
 
