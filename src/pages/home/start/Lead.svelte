@@ -156,8 +156,8 @@
 		<p>Match Number: {queuingState.match.matchNumber}</p>
 		{#each Object.keys(queuingState.match.objectiveScouters) as scouterID}
 			<p>
-				{@render scouter(scouterID)} - {queuingState.match.objectiveScouters[scouterID]} ({queuingState.match
-					.teamAllianceColors[queuingState.match.objectiveScouters[scouterID]]})
+				{@render scouter(scouterID)} - Team {queuingState.match.objectiveScouters[scouterID]} ({queuingState
+					.match.teamAllianceColors[queuingState.match.objectiveScouters[scouterID]]})
 			</p>
 		{/each}
 
@@ -178,7 +178,7 @@
 			</div>
 		{:else}
 			<div>
-				<Button danger onclick={() => signalMatchEnded()}
+				<Button onclick={() => signalMatchEnded()}
 					>Signal match is ended and tell scouters to submit results</Button
 				>
 			</div>

@@ -7,6 +7,7 @@
 	import { scouterState } from "../../queuing/scouter.svelte";
 	import MatchHeader from "./MatchHeader.svelte";
 	import Button from "../../components/Button.svelte";
+	import Checkbox from "../../components/Checkbox.svelte";
 </script>
 
 <div class="header">
@@ -20,7 +21,7 @@
 	<div class="subheader subheader--underline subheader--underline--green">Prematch</div>
 
 	{#if !matchData.prematch.noShow}
-		<Button onclick={() => (matchData.prematch.noShow = !matchData.prematch.noShow)}>&#x2715; No Show?</Button>
+		<Checkbox bind:value={matchData.prematch.noShow}>No Show?</Checkbox>
 		<br />
 		<label>
 			Starting position:
@@ -38,9 +39,7 @@
 		/>
 		<br />
 	{:else}
-		<Button danger onclick={() => (matchData.prematch.noShow = !matchData.prematch.noShow)}
-			>&#x2714; No Show?</Button
-		>
+		<Checkbox bind:value={matchData.prematch.noShow}>No Show?</Checkbox>
 	{/if}
 
 	<style>

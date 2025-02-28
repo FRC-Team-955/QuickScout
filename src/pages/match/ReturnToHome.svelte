@@ -7,11 +7,6 @@
 		/** @type {"normal" | "confirm exit"} */
 		buttonState: "normal",
 	});
-
-	function onExit() {
-		resetMatchScouter();
-		setUIState("home");
-	}
 </script>
 
 {#if !scouterState.isInOnlineMatch}
@@ -19,7 +14,7 @@
 		<Button headerRight extraClasses="header__return-button" onclick={() => (buttonState.buttonState = "normal")}
 			>Cancel Exit</Button
 		>
-		<Button danger headerRight extraClasses="header__return-button" onclick={onExit}
+		<Button danger headerRight extraClasses="header__return-button" onclick={resetMatchScouter}
 			>Confirm Exit (all data will be lost!)</Button
 		>
 	{:else}

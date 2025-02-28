@@ -5,6 +5,7 @@
 	import textlogo from "../../assets/text-logo-removebg.png";
 	import MatchHeader from "./MatchHeader.svelte";
 	import Button from "../../components/Button.svelte";
+	import Checkbox from "../../components/Checkbox.svelte";
 </script>
 
 <div class="header">
@@ -17,11 +18,7 @@
 
 	<h2 class="subheader subheader--underline subheader--underline--green">Autonomous</h2>
 
-	{#if !matchData.autonomous.leave}
-		<Button danger onclick={() => (matchData.autonomous.leave = true)}>&#x2715; Left Starting Line</Button>
-	{:else}
-		<Button success onclick={() => (matchData.autonomous.leave = false)}>&#x2714; Left Starting Line</Button>
-	{/if}
+	<Checkbox bind:value={matchData.autonomous.leave}>Left Starting Line</Checkbox>
 	<br />
 
 	<Scoring isAutonomous />

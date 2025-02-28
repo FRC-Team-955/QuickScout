@@ -83,12 +83,15 @@ export function updateAsLead() {
 		let changedMatch = false;
 
 		// Check if all data retrieved
+		const scouters = Object.values(queuingState.match.objectiveScouters);
 		if (
-			Object.values(queuingState.match.objectiveScouters).every(
+			scouters.length > 0 &&
+			scouters.every(
 				(teamNumber) =>
 					teamNumber.toString() in leadState.collectedMatchData[queuingState.match.matchNumber.toString()],
 			)
 		) {
+			console.log("ending match since all data retrieved");
 			queuingState.match.matchRunning = false;
 			changedMatch = true;
 		}
@@ -97,6 +100,7 @@ export function updateAsLead() {
 		for (const id of Object.keys(queuingState.match.objectiveScouters)) {
 			const teamNumber = queuingState.match.objectiveScouters[id];
 			if (teamNumber.toString() in leadState.collectedMatchData[queuingState.match.matchNumber.toString()]) {
+				console.log("removing " + id);
 				delete queuingState.match.objectiveScouters[id];
 				changedMatch = true;
 			}
@@ -107,6 +111,14 @@ export function updateAsLead() {
 }
 
 export function startMatch() {
+	if (
+		Object.keys(queuingState.queue).length < 6 &&
+		!confirm(
+			"There are less than six people in the queue. Are you sure you want to start a match? Not all teams will be scouted.",
+		)
+	)
+		return;
+
 	const idsForMatch = Object.keys(queuingState.queue).slice(0, 6);
 	queuingState.match.matchNumber = leadState.matchConfig.matchNumber;
 

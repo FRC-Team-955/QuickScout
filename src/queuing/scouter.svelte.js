@@ -61,4 +61,5 @@ export function resetMatchScouter() {
 	scouterState.matchEndSignaled = false;
 	persistScouterState();
 	resetMatchData();
+	setUIState("home");
 }
