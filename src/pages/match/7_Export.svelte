@@ -27,6 +27,7 @@
 		// ensure order
 		"objective",
 		scouterInfo.scouterID,
+		scouterState.isInOnlineMatch,
 		...objectValuesDeep(matchData.metadata),
 		...objectValuesDeep(matchData.prematch),
 		...objectValuesDeep(matchData.autonomous),
