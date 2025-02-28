@@ -3,13 +3,17 @@
 	import { joinQueue } from "../../../queuing/scouter.svelte";
 	import { queuingState, removeFromQueue, serverState } from "../../../queuing/shared.svelte";
 	import { scouterInfo, persistScouterInfo, appState, setUIState } from "../../../state.svelte";
+
+	let notInQueue = $derived(
+		!(scouterInfo.scouterID in queuingState.queue) || !queuingState.queue[scouterInfo.scouterID],
+	);
 </script>
 
 {#if !serverState.connected}
 	<p>Not connected to server. Check your internet connection and reload (quit and reopen) the app.</p>
 {:else}
 	<p>Connected to server!</p>
-	{#if !(scouterInfo.scouterID in queuingState.queue) || !queuingState.queue[scouterInfo.scouterID]}
+	{#if notInQueue}
 		<Button onclick={() => joinQueue()}>Join Queue</Button>
 		<br />
 	{:else}
@@ -28,5 +32,7 @@
 	<br />
 {/if}
 
-<Button danger onclick={() => setUIState("match")}>Start manual scouting</Button>
-<br />
+{#if notInQueue}
+	<Button danger onclick={() => setUIState("match")}>Start manual scouting</Button>
+	<br />
+{/if}

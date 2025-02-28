@@ -1,7 +1,40 @@
 <script>
 	import Button from "../../../components/Button.svelte";
-	import { forceEndMatch, leadState, signalMatchEnded, startMatch } from "../../../queuing/lead.svelte";
+	import {
+		forceEndMatch,
+		leadState,
+		persistLeadState,
+		signalMatchEnded,
+		startMatch,
+	} from "../../../queuing/lead.svelte";
 	import { queuingState, serverState, removeFromQueue } from "../../../queuing/shared.svelte";
+
+	/** @type {HTMLInputElement} */
+	let fileInput;
+	const fileReader = new FileReader();
+	fileReader.addEventListener("load", () => {
+		const content = fileReader.result.toString();
+		console.log("got content", content);
+
+		leadState.scouterIDMapping = {};
+
+		const lines = content.trim().split("\n");
+		console.log(lines.length);
+		for (const line of lines) {
+			const vals = line.split(",");
+			console.log(vals.length);
+			if (vals.length < 2) continue;
+			leadState.scouterIDMapping[vals[0].trim()] = vals[1].trim();
+		}
+
+		persistLeadState();
+	});
+	function onFileChange() {
+		if (fileInput.files.length > 0) {
+			console.log("got file");
+			fileReader.readAsText(fileInput.files[0]);
+		}
+	}
 </script>
 
 {#if !serverState.connected}
@@ -12,27 +45,36 @@
 	<p>Connected to server and successfully signed in as a lead!</p>
 {/if}
 
-<Button onclick={() => alert("TODO")}>Import scouter ID map</Button>
+<Button onclick={() => fileInput.click()}>
+	Import scouter ID map
+	<input type="file" bind:this={fileInput} style="display: none" accept="text/csv" onchange={onFileChange} />
+</Button>
 <br />
+
+<p>Scouters in scouter ID map: {Object.keys(leadState.scouterIDMapping).length}</p>
 
 <Button onclick={() => alert("TODO")}>Export data</Button>
 <br />
+
+{#snippet scouter(id)}
+	{leadState.scouterIDMapping[id] || "Unknown"} (ID: {id})
+{/snippet}
 
 {#if serverState.connected && serverState.signedIn}
 	<h2>Connected Scouters</h2>
 	<details>
 		<summary>Expand</summary>
-		{#each Object.keys(queuingState.connected).filter((key) => queuingState.connected[key]) as scouter}
-			<p>{leadState.scouterIDMapping[scouter] || "Unknown"} (ID: {scouter})</p>
+		{#each Object.keys(queuingState.connected).filter((key) => queuingState.connected[key]) as scouterID}
+			<p>{@render scouter(scouterID)}</p>
 		{/each}
 	</details>
 
 	<h2>Queue</h2>
 	{#each Object.keys(queuingState.queue).sort((a, b) => queuingState.queue[a] - queuingState.queue[b]) as scouterID, index}
 		<p>
-			{index + 1}. {leadState.scouterIDMapping[scouterID] || "Unknown"} (ID: {scouterID})
+			{index + 1}. {@render scouter(scouterID)}
 			{#if !(scouterID in queuingState.connected) || !queuingState.connected[scouterID]}
-				<strong>NOT CONNECTED</strong>
+				<strong style="color: red">NOT CONNECTED</strong>
 			{/if}
 			<Button onclick={() => removeFromQueue(scouterID)}>Remove from queue</Button>
 		</p>
@@ -112,24 +154,20 @@
 	{:else}
 		<h2>Match Info</h2>
 		<p>Match Number: {queuingState.match.matchNumber}</p>
-		{#each Object.keys(queuingState.match.objectiveScouters) as scouter}
+		{#each Object.keys(queuingState.match.objectiveScouters) as scouterID}
 			<p>
-				{leadState.scouterIDMapping[scouter] || "Unknown"} (ID: {scouter}) - {queuingState.match
-					.objectiveScouters[scouter]} ({queuingState.match.teamAllianceColors[
-					queuingState.match.objectiveScouters[scouter]
-				]})
+				{@render scouter(scouterID)} - {queuingState.match.objectiveScouters[scouterID]} ({queuingState.match
+					.teamAllianceColors[queuingState.match.objectiveScouters[scouterID]]})
 			</p>
 		{/each}
 
 		{#if queuingState.match.matchEnded}
 			<h2>Remaining Data</h2>
-			{#each Object.keys(queuingState.match.objectiveScouters) as scouter}
-				{#if !(queuingState.match.matchNumber.toString() in leadState.collectedMatchData) || !(queuingState.match.objectiveScouters[scouter].toString() in leadState.collectedMatchData[queuingState.match.matchNumber.toString()])}
+			{#each Object.keys(queuingState.match.objectiveScouters) as scouterID}
+				{#if !(queuingState.match.matchNumber.toString() in leadState.collectedMatchData) || !(queuingState.match.objectiveScouters[scouterID].toString() in leadState.collectedMatchData[queuingState.match.matchNumber.toString()])}
 					<p>
-						{leadState.scouterIDMapping[scouter] || "Unknown"} (ID: {scouter}) - {queuingState.match
-							.objectiveScouters[scouter]} ({queuingState.match.teamAllianceColors[
-							queuingState.match.objectiveScouters[scouter]
-						]})
+						{@render scouter(scouterID)} - {queuingState.match.objectiveScouters[scouterID]} ({queuingState
+							.match.teamAllianceColors[queuingState.match.objectiveScouters[scouterID]]})
 					</p>
 				{/if}
 			{/each}
