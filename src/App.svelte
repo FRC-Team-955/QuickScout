@@ -23,9 +23,17 @@
 
 	// Try to update the service worker
 	if ("serviceWorker" in navigator) {
-		navigator.serviceWorker.getRegistrations().then((registrations) => {
-			console.log("Updating service worker");
-			for (const registration of registrations) registration.update();
+		window.addEventListener("load", () => {
+			navigator.serviceWorker.register("./service-worker.js", { scope: "./" }).finally(() => {
+				function updateSW() {
+					navigator.serviceWorker.getRegistrations().then((registrations) => {
+						console.log("Updating service worker");
+						for (const registration of registrations) registration.update();
+					});
+				}
+				updateSW();
+				setInterval(updateSW, 5 * 60 * 1000);
+			});
 		});
 	} else {
 		console.log("Service worker not available");
