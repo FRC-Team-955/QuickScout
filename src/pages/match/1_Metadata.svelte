@@ -15,10 +15,24 @@
 
 	<div class="subheader subheader--underline subheader--underline--blue">Metadata</div>
 
-	<label>Match number: <input class="input input--disable-spinner" bind:value={matchData.metadata.matchNumber} type="number" placeholder="Enter Match Number" /></label>
+	<label
+		>Match number: <input
+			class="input input--disable-spinner"
+			bind:value={matchData.metadata.matchNumber}
+			type="number"
+			placeholder="Enter Match Number"
+		/></label
+	>
 	<br />
 
-	<label>Team number: <input class="input input--disable-spinner" bind:value={matchData.metadata.teamNumber} type="number" placeholder="Enter Team Number" /></label>
+	<label
+		>Team number: <input
+			class="input input--disable-spinner"
+			bind:value={matchData.metadata.teamNumber}
+			type="number"
+			placeholder="Enter Team Number"
+		/></label
+	>
 	<br />
 
 	<label>
@@ -35,7 +49,9 @@
 		<button
 			class="standard-button footer__button"
 			onclick={() => (appState.matchState = "prematch")}
-			disabled={matchData.metadata.matchNumber == null || matchData.metadata.teamNumber == null || matchData.metadata.alliance == null}
+			disabled={matchData.metadata.matchNumber == null ||
+				matchData.metadata.teamNumber == null ||
+				matchData.metadata.alliance == null}
 		>
 			Next (Prematch)
 		</button>

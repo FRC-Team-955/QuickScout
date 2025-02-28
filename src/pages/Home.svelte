@@ -1,5 +1,5 @@
 <script>
-	import { matchData, appState } from "../state.svelte";
+	import { appState } from "../state.svelte";
 
 	import Start from "./home/Start.svelte";
 	import Setup from "./home/Setup.svelte";

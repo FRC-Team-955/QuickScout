@@ -1,5 +1,5 @@
 <script>
-	import { matchData, appState } from "../state.svelte";
+	import { appState } from "../state.svelte";
 	import Export from "./match/7_Export.svelte";
 
 	import Metadata from "./match/1_Metadata.svelte";

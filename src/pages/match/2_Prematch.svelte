@@ -19,7 +19,9 @@
 	<div class="subheader subheader--underline subheader--underline--green">Prematch</div>
 
 	{#if !matchData.prematch.noShow}
-		<button class="standard-button" onclick={() => (matchData.prematch.noShow = !matchData.prematch.noShow)}>&#x2715; No Show?</button>
+		<button class="standard-button" onclick={() => (matchData.prematch.noShow = !matchData.prematch.noShow)}
+			>&#x2715; No Show?</button
+		>
 		<br />
 		<label>
 			Starting position:
@@ -30,10 +32,17 @@
 			</select>
 		</label>
 		<br />
-		<img style="max-width:50%" src={matchData.metadata.alliance == "blue" ? startingPositionBlue : startingPositionRed} alt="Field with starting locations indicated" />
+		<img
+			style="max-width:50%"
+			src={matchData.metadata.alliance == "blue" ? startingPositionBlue : startingPositionRed}
+			alt="Field with starting locations indicated"
+		/>
 		<br />
 	{:else}
-		<button class="standard-button standard-button--danger" onclick={() => (matchData.prematch.noShow = !matchData.prematch.noShow)}>&#x2714; No Show?</button>
+		<button
+			class="standard-button standard-button--danger"
+			onclick={() => (matchData.prematch.noShow = !matchData.prematch.noShow)}>&#x2714; No Show?</button
+		>
 	{/if}
 
 	<style>
@@ -46,10 +55,23 @@
 <div class="footer">
 	<div class="footer--middle">
 		{#if !scouterState.isInOnlineMatch}
-			<button class="standard-button footer__button" onclick={() => (appState.matchState = "metadata")}>Previous (Metadata)</button>
+			<button class="standard-button footer__button" onclick={() => (appState.matchState = "metadata")}
+				>Previous (Metadata)</button
+			>
 		{/if}
-		<button class="standard-button footer__button" onclick={() => (appState.matchState = "autonomous")} disabled={matchData.prematch.startingLocation == null && !matchData.prematch.noShow}>
-			Next (Autonomous)
-		</button>
+
+		{#if !matchData.prematch.noShow}
+			<button
+				class="standard-button footer__button"
+				onclick={() => (appState.matchState = "autonomous")}
+				disabled={matchData.prematch.startingLocation == null}
+			>
+				Next (Autonomous)
+			</button>
+		{:else}
+			<button class="standard-button footer__button" onclick={() => (appState.matchState = "postmatch")}>
+				Next (Postmatch)
+			</button>
+		{/if}
 	</div>
 </div>

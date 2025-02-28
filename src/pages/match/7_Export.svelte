@@ -33,7 +33,7 @@
 		...objectValuesDeep(matchData.postmatch),
 	];
 	let svg = toSVGString(allValues.join("\t"), {
-		style: "width: 100%",
+		style: "width: 90%; max-height: 80vh",
 		margin: 0,
 	});
 
@@ -58,7 +58,11 @@
 		<br />
 		<br />
 		<div><button class="standard-button" onclick={() => (choseQrcode = false)}>Back</button></div>
-		<div><button class="standard-button standard-button--danger footer__button" onclick={() => resetMatchScouter()}>New match (ALL DATA WILL BE RESET!)</button></div>
+		<div>
+			<button class="standard-button standard-button--danger footer__button" onclick={() => resetMatchScouter()}
+				>New match (ALL DATA WILL BE RESET!)</button
+			>
+		</div>
 	{:else if choseOnline}
 		{#if exportingOnline}
 			<p>Exporting...</p>
@@ -67,7 +71,7 @@
 			<button class="standard-button" onclick={() => (choseOnline = false)}>Back</button>
 		{:else}
 			<p>Successfully exported!</p>
-			<button class="standard-button standard-button--danger footer__button" onclick={() => resetMatchScouter()}>New match (ALL DATA WILL BE RESET!)</button>
+			<button class="standard-button footer__button" onclick={() => resetMatchScouter()}>New match</button>
 		{/if}
 	{:else}
 		<button
@@ -95,9 +99,14 @@
 {#if !choseOnline && !choseQrcode}
 	<div class="footer">
 		<div class="footer--middle">
-			<button class="standard-button footer__button" onclick={() => (appState.matchState = "postmatch")}>Previous (Postmatch)</button>
+			<button class="standard-button footer__button" onclick={() => (appState.matchState = "postmatch")}
+				>Previous (Postmatch)</button
+			>
 			{#if !scouterState.isInOnlineMatch}
-				<button class="standard-button standard-button--danger footer__button" onclick={() => resetMatchScouter()}>New match (ALL DATA WILL BE RESET!)</button>
+				<button
+					class="standard-button standard-button--danger footer__button"
+					onclick={() => resetMatchScouter()}>New match (ALL DATA WILL BE RESET!)</button
+				>
 			{/if}
 		</div>
 	</div>

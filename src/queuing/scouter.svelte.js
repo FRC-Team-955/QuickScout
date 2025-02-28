@@ -1,5 +1,5 @@
 import { ref, set } from "firebase/database";
-import { appState, matchData, scouterInfo, setUIState } from "../state.svelte";
+import { appState, matchData, resetMatchData, scouterInfo, setUIState } from "../state.svelte";
 import { queuingState } from "./shared.svelte";
 import { db } from "./firebase";
 
@@ -60,5 +60,5 @@ export function resetMatchScouter() {
 	scouterState.isInOnlineMatch = false;
 	scouterState.matchEndSignaled = false;
 	persistScouterState();
-	setTimeout(() => location.reload(), 300);
+	resetMatchData();
 }

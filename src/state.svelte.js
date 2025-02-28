@@ -29,7 +29,10 @@ export function setUIState(state) {
 	appState.matchState = "metadata";
 }
 
-export let matchData = $state({
+const matchDataKey = "matchData";
+const scoringStateKey = "scoringState";
+
+const defaultMatchData = {
 	metadata: {
 		matchNumber: null,
 		teamNumber: null,
@@ -90,10 +93,38 @@ export let matchData = $state({
 		tippedOver: false,
 		card: false,
 	},
-});
+};
 
-// This way, if the robot has a gamepiece in auto and doesn't score it before teleop the scouter and still say it's scored in teleop
-export let scoringState = $state({
+/** @type {typeof defaultMatchData} */
+export let matchData = $state(JSON.parse(localStorage.getItem(matchDataKey)) || structuredClone(defaultMatchData));
+
+const defaultScoringState = {
 	hasCoral: false,
 	hasAlgae: false,
-});
+};
+
+// This way, if the robot has a gamepiece in auto and doesn't score it before teleop the scouter and still say it's scored in teleop
+/** @type {typeof defaultScoringState} */
+export let scoringState = $state(
+	JSON.parse(localStorage.getItem(scoringStateKey)) || structuredClone(defaultScoringState),
+);
+
+export function persistMatchData() {
+	console.log("Saving match data");
+	localStorage.setItem(matchDataKey, JSON.stringify(matchData));
+	localStorage.setItem(scoringStateKey, JSON.stringify(scoringState));
+}
+
+setInterval(persistMatchData, 2000);
+
+export function resetMatchData() {
+	const newMatchData = structuredClone(defaultMatchData);
+	// svelte doesn't like direct write
+	for (const key of Object.keys(newMatchData)) matchData[key] = newMatchData[key];
+
+	const newScoringState = structuredClone(defaultScoringState);
+	// svelte doesn't like direct write
+	for (const key of Object.keys(newScoringState)) scoringState[key] = newScoringState[key];
+
+	persistMatchData();
+}
