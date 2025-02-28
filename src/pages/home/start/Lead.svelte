@@ -35,6 +35,20 @@
 			fileReader.readAsText(fileInput.files[0]);
 		}
 	}
+
+	async function exportAndCopy() {
+		const data = [];
+		for (const matchNumber of Object.keys(leadState.collectedMatchData)) {
+			const matchData = leadState.collectedMatchData[matchNumber];
+			for (const teamNumber of Object.keys(matchData)) {
+				const teamData = matchData[teamNumber];
+				data.push(Object.values(teamData).join("\t"));
+			}
+		}
+
+		await navigator.clipboard.writeText(data.join("\n"));
+		alert("Data is copied to clipboard");
+	}
 </script>
 
 {#if !serverState.connected}
@@ -53,7 +67,7 @@
 
 <p>Scouters in scouter ID map: {Object.keys(leadState.scouterIDMapping).length}</p>
 
-<Button onclick={() => alert("TODO")}>Export data</Button>
+<Button onclick={exportAndCopy}>Export data</Button>
 <br />
 
 {#snippet scouter(id)}
