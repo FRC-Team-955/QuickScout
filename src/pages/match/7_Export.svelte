@@ -7,6 +7,7 @@
 	import { serverState } from "../../queuing/shared.svelte";
 	import MatchHeader from "./MatchHeader.svelte";
 	import { exportData, resetMatchScouter, scouterState } from "../../queuing/scouter.svelte";
+	import Button from "../../components/Button.svelte";
 
 	function objectValuesDeep(object) {
 		let allValues = [];
@@ -57,25 +58,20 @@
 		{@html svg}
 		<br />
 		<br />
-		<div><button class="standard-button" onclick={() => (choseQrcode = false)}>Back</button></div>
-		<div>
-			<button class="standard-button standard-button--danger footer__button" onclick={() => resetMatchScouter()}
-				>New match (ALL DATA WILL BE RESET!)</button
-			>
-		</div>
+		<div><Button onclick={() => (choseQrcode = false)}>Back</Button></div>
+		<div><Button danger onclick={() => resetMatchScouter()}>New match (ALL DATA WILL BE RESET!)</Button></div>
 	{:else if choseOnline}
 		{#if exportingOnline}
 			<p>Exporting...</p>
 		{:else if exportError}
 			<p>An error occurred. Check your internet connection and try again</p>
-			<button class="standard-button" onclick={() => (choseOnline = false)}>Back</button>
+			<Button onclick={() => (choseOnline = false)}>Back</Button>
 		{:else}
 			<p>Successfully exported!</p>
-			<button class="standard-button footer__button" onclick={() => resetMatchScouter()}>New match</button>
+			<Button onclick={() => resetMatchScouter()}>New match</Button>
 		{/if}
 	{:else}
-		<button
-			class="standard-button"
+		<Button
 			onclick={() => {
 				if (!serverState.connected) {
 					alert("Currently disconnected from server. Check your internet connection and try again");
@@ -88,10 +84,10 @@
 					() => (exportError = true),
 				);
 				choseOnline = true;
-			}}>Export over the internet (recommended)</button
+			}}>Export over the internet (recommended)</Button
 		>
 		<br />
-		<button class="standard-button" onclick={() => (choseQrcode = true)}>Export via QR code</button>
+		<Button onclick={() => (choseQrcode = true)}>Export via QR code</Button>
 		<br />
 	{/if}
 </div>
@@ -99,14 +95,9 @@
 {#if !choseOnline && !choseQrcode}
 	<div class="footer">
 		<div class="footer--middle">
-			<button class="standard-button footer__button" onclick={() => (appState.matchState = "postmatch")}
-				>Previous (Postmatch)</button
-			>
+			<Button footer onclick={() => (appState.matchState = "postmatch")}>Previous (Postmatch)</Button>
 			{#if !scouterState.isInOnlineMatch}
-				<button
-					class="standard-button standard-button--danger footer__button"
-					onclick={() => resetMatchScouter()}>New match (ALL DATA WILL BE RESET!)</button
-				>
+				<Button danger footer onclick={() => resetMatchScouter()}>New match (ALL DATA WILL BE RESET!)</Button>
 			{/if}
 		</div>
 	</div>

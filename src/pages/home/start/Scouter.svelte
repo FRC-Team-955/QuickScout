@@ -1,4 +1,5 @@
 <script>
+	import Button from "../../../components/Button.svelte";
 	import { joinQueue } from "../../../queuing/scouter.svelte";
 	import { queuingState, removeFromQueue, serverState } from "../../../queuing/shared.svelte";
 	import { scouterInfo, persistScouterInfo, appState, setUIState } from "../../../state.svelte";
@@ -9,7 +10,7 @@
 {:else}
 	<p>Connected to server!</p>
 	{#if !(scouterInfo.scouterID in queuingState.queue) || !queuingState.queue[scouterInfo.scouterID]}
-		<button class="standard-button" onclick={() => joinQueue()}>Join Queue</button>
+		<Button onclick={() => joinQueue()}>Join Queue</Button>
 		<br />
 	{:else}
 		{#if queuingState.queue[scouterInfo.scouterID] != -1}
@@ -19,7 +20,7 @@
 					.indexOf(scouterInfo.scouterID) + 1} in queue
 			</p>
 		{/if}
-		<button class="standard-button" onclick={() => removeFromQueue(scouterInfo.scouterID)}>Leave Queue</button>
+		<Button onclick={() => removeFromQueue(scouterInfo.scouterID)}>Leave Queue</Button>
 		<br />
 	{/if}
 	<br />
@@ -27,5 +28,5 @@
 	<br />
 {/if}
 
-<button class="standard-button standard-button--danger" onclick={() => setUIState("match")}>Start manual scouting</button>
+<Button danger onclick={() => setUIState("match")}>Start manual scouting</Button>
 <br />

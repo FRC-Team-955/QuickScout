@@ -3,6 +3,8 @@
 	import { matchData, appState } from "../../state.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
 	import MatchHeader from "./MatchHeader.svelte";
+	import Checkbox from "../../components/Checkbox.svelte";
+	import Button from "../../components/Button.svelte";
 </script>
 
 <div class="header">
@@ -14,52 +16,21 @@
 	<MatchHeader />
 
 	<h2 class="subheader subheader--underline subheader--underline--green">Postmatch</h2>
-	{#if !matchData.postmatch.dead}
-		<button class="standard-button standard-button--danger" onclick={() => (matchData.postmatch.dead = true)}
-			>&#x2715; Dead?</button
-		>
-	{:else}
-		<button class="standard-button standard-button--success" onclick={() => (matchData.postmatch.dead = false)}
-			>&#x2714; Dead?</button
-		>
-	{/if}
+	<Checkbox bind:value={matchData.postmatch.dead}>Dead?</Checkbox>
 	<br />
-	{#if !matchData.postmatch.tippedOver}
-		<button class="standard-button standard-button--danger" onclick={() => (matchData.postmatch.tippedOver = true)}
-			>&#x2715; Tipped Over?</button
-		>
-	{:else}
-		<button
-			class="standard-button standard-button--success"
-			onclick={() => (matchData.postmatch.tippedOver = false)}>&#x2714; Tipped Over?</button
-		>
-	{/if}
+	<Checkbox bind:value={matchData.postmatch.tippedOver}>Tipped Over?</Checkbox>
 	<br />
-	{#if !matchData.postmatch.card}
-		<button class="standard-button standard-button--danger" onclick={() => (matchData.postmatch.card = true)}
-			>&#x2715; Yellow/red card?</button
-		>
-	{:else}
-		<button class="standard-button standard-button--success" onclick={() => (matchData.postmatch.card = false)}
-			>&#x2714; Yellow/red card?</button
-		>
-	{/if}
+	<Checkbox bind:value={matchData.postmatch.card}>Yellow/red card?</Checkbox>
 	<br />
 </div>
 
 <div class="footer">
 	<div class="footer--middle">
 		{#if !matchData.prematch.noShow}
-			<button class="standard-button footer__button" onclick={() => (appState.matchState = "endgame")}
-				>Previous (Endgame)</button
-			>
+			<Button footer onclick={() => (appState.matchState = "endgame")}>Previous (Endgame)</Button>
 		{:else}
-			<button class="standard-button footer__button" onclick={() => (appState.matchState = "prematch")}
-				>Previous (Prematch)</button
-			>
+			<Button footer onclick={() => (appState.matchState = "prematch")}>Previous (Prematch)</Button>
 		{/if}
-		<button class="standard-button footer__button" onclick={() => (appState.matchState = "export")}
-			>Finish and Export</button
-		>
+		<Button footer onclick={() => (appState.matchState = "export")}>Finish and Export</Button>
 	</div>
 </div>

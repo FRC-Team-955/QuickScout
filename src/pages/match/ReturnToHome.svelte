@@ -1,18 +1,32 @@
 <script>
-	import { scouterState } from "../../queuing/scouter.svelte";
+	import Button from "../../components/Button.svelte";
+	import { resetMatchScouter, scouterState } from "../../queuing/scouter.svelte";
 	import { setUIState } from "../../state.svelte";
 
 	let buttonState = $state({
 		/** @type {"normal" | "confirm exit"} */
 		buttonState: "normal",
 	});
+
+	function onExit() {
+		resetMatchScouter();
+		setUIState("home");
+	}
 </script>
 
 {#if !scouterState.isInOnlineMatch}
 	{#if buttonState.buttonState == "confirm exit"}
-		<button class="standard-button header__return-button header--right" onclick={() => (buttonState.buttonState = "normal")}>Cancel Exit</button>
-		<button class="standard-button standard-button--danger header__return-button header--right" onclick={() => setUIState("home")}>Confirm Exit (all data will be lost!)</button>
+		<Button headerRight extraClasses="header__return-button" onclick={() => (buttonState.buttonState = "normal")}
+			>Cancel Exit</Button
+		>
+		<Button danger headerRight extraClasses="header__return-button" onclick={onExit}
+			>Confirm Exit (all data will be lost!)</Button
+		>
 	{:else}
-		<button class="standard-button header__return-button header--right" onclick={() => (buttonState.buttonState = "confirm exit")}>Return to Home</button>
+		<Button
+			headerRight
+			extraClasses="header__return-button"
+			onclick={() => (buttonState.buttonState = "confirm exit")}>Return to Home</Button
+		>
 	{/if}
 {/if}

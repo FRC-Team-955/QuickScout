@@ -5,6 +5,7 @@
 	import Scouter from "./start/Scouter.svelte";
 
 	import textlogo from "../../assets/text-logo-removebg.png";
+	import Button from "../../components/Button.svelte";
 </script>
 
 <div class="header">
@@ -14,7 +15,7 @@
 <div class="contents">
 	<h3>Made by FRC Teams 749, 955, 997</h3>
 
-	<button class="standard-button" onclick={() => (appState.homeState = "setup")}>Setup</button>
+	<Button onclick={() => (appState.homeState = "setup")}>Setup</Button>
 
 	<p>Welcome! Your scouter ID is set to {scouterInfo.scouterID}</p>
 

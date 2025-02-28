@@ -3,6 +3,7 @@
 
 	import textlogo from "../../assets/text-logo-removebg.png";
 	import { tryToSignIn } from "../../queuing/lead.svelte";
+	import Button from "../../components/Button.svelte";
 </script>
 
 <div class="header">
@@ -54,15 +55,19 @@
 		<br />
 	{:else}
 		<p>Scouter IDs should be a single letter followed by a single number.</p>
-		<p>Your scouter ID should be on your role badge. If you don't know it, please ask your scouting lead for your scouter ID.</p>
+		<p>
+			Your scouter ID should be on your role badge. If you don't know it, please ask your scouting lead for your
+			scouter ID.
+		</p>
 	{/if}
 
-	<button
-		class="standard-button"
+	<Button
 		onclick={() => {
 			tryToSignIn();
 			appState.homeState = "start";
 		}}
-		disabled={scouterInfo.scouterID.length > 2 ? scouterInfo.email.length == 0 || scouterInfo.password.length == 0 : !/[A-Z][0-9]$/.test(scouterInfo.scouterID)}>Complete Setup</button
+		disabled={scouterInfo.scouterID.length > 2
+			? scouterInfo.email.length == 0 || scouterInfo.password.length == 0
+			: !/[A-Z][0-9]$/.test(scouterInfo.scouterID)}>Complete Setup</Button
 	>
 </div>

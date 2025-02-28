@@ -6,6 +6,7 @@
 	import textlogo from "../../assets/text-logo-removebg.png";
 	import { scouterState } from "../../queuing/scouter.svelte";
 	import MatchHeader from "./MatchHeader.svelte";
+	import Button from "../../components/Button.svelte";
 </script>
 
 <div class="header">
@@ -19,9 +20,7 @@
 	<div class="subheader subheader--underline subheader--underline--green">Prematch</div>
 
 	{#if !matchData.prematch.noShow}
-		<button class="standard-button" onclick={() => (matchData.prematch.noShow = !matchData.prematch.noShow)}
-			>&#x2715; No Show?</button
-		>
+		<Button onclick={() => (matchData.prematch.noShow = !matchData.prematch.noShow)}>&#x2715; No Show?</Button>
 		<br />
 		<label>
 			Starting position:
@@ -39,9 +38,8 @@
 		/>
 		<br />
 	{:else}
-		<button
-			class="standard-button standard-button--danger"
-			onclick={() => (matchData.prematch.noShow = !matchData.prematch.noShow)}>&#x2714; No Show?</button
+		<Button danger onclick={() => (matchData.prematch.noShow = !matchData.prematch.noShow)}
+			>&#x2714; No Show?</Button
 		>
 	{/if}
 
@@ -55,23 +53,19 @@
 <div class="footer">
 	<div class="footer--middle">
 		{#if !scouterState.isInOnlineMatch}
-			<button class="standard-button footer__button" onclick={() => (appState.matchState = "metadata")}
-				>Previous (Metadata)</button
-			>
+			<Button footer onclick={() => (appState.matchState = "metadata")}>Previous (Metadata)</Button>
 		{/if}
 
 		{#if !matchData.prematch.noShow}
-			<button
-				class="standard-button footer__button"
+			<Button
+				footer
 				onclick={() => (appState.matchState = "autonomous")}
 				disabled={matchData.prematch.startingLocation == null}
 			>
 				Next (Autonomous)
-			</button>
+			</Button>
 		{:else}
-			<button class="standard-button footer__button" onclick={() => (appState.matchState = "postmatch")}>
-				Next (Postmatch)
-			</button>
+			<Button footer onclick={() => (appState.matchState = "postmatch")}>Next (Postmatch)</Button>
 		{/if}
 	</div>
 </div>

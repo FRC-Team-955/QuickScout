@@ -5,9 +5,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite --host --port 8888",
-		"build": "vite build",
-		"preview": "vite preview",
-	    "generate-pwa-assets": "pwa-assets-generator"
+		"build": "vite build && pwa-assets-generator",
+		"preview": "vite preview"
 	},
 	"devDependencies": {
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
@@ -18,6 +17,7 @@
 	},
 	"dependencies": {
 		"dijkstrajs": "^1.0.3",
-		"firebase": "^11.3.1"
+		"firebase": "^11.3.1",
+		"lucide-svelte": "^0.476.0"
 	}
 }

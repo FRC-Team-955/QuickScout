@@ -3,6 +3,7 @@
 	import textlogo from "../../assets/text-logo-removebg.png";
 	import ReturnToHome from "./ReturnToHome.svelte";
 	import MatchHeader from "./MatchHeader.svelte";
+	import Button from "../../components/Button.svelte";
 </script>
 
 <div class="header">
@@ -46,14 +47,14 @@
 
 <div class="footer">
 	<div class="footer--middle">
-		<button
-			class="standard-button footer__button"
+		<Button
+			footer
 			onclick={() => (appState.matchState = "prematch")}
 			disabled={matchData.metadata.matchNumber == null ||
 				matchData.metadata.teamNumber == null ||
 				matchData.metadata.alliance == null}
 		>
 			Next (Prematch)
-		</button>
+		</Button>
 	</div>
 </div>

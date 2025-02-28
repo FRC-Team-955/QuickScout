@@ -1,4 +1,5 @@
 <script>
+	import Button from "../../../components/Button.svelte";
 	import { forceEndMatch, leadState, signalMatchEnded, startMatch } from "../../../queuing/lead.svelte";
 	import { queuingState, serverState, removeFromQueue } from "../../../queuing/shared.svelte";
 </script>
@@ -11,10 +12,10 @@
 	<p>Connected to server and successfully signed in as a lead!</p>
 {/if}
 
-<button class="standard-button" onclick={() => alert("TODO")}>Import scouter ID map</button>
+<Button onclick={() => alert("TODO")}>Import scouter ID map</Button>
 <br />
 
-<button class="standard-button" onclick={() => alert("TODO")}>Export data</button>
+<Button onclick={() => alert("TODO")}>Export data</Button>
 <br />
 
 {#if serverState.connected && serverState.signedIn}
@@ -33,7 +34,7 @@
 			{#if !(scouterID in queuingState.connected) || !queuingState.connected[scouterID]}
 				<strong>NOT CONNECTED</strong>
 			{/if}
-			<button class="standard-button" onclick={() => removeFromQueue(scouterID)}>Remove from queue</button>
+			<Button onclick={() => removeFromQueue(scouterID)}>Remove from queue</Button>
 		</p>
 	{/each}
 
@@ -97,8 +98,7 @@
 		<br />
 
 		<div>
-			<button
-				class="standard-button"
+			<Button
 				onclick={() => startMatch()}
 				disabled={Number.isNaN(leadState.matchConfig.matchNumber) ||
 					Number.isNaN(leadState.matchConfig.red1) ||
@@ -106,7 +106,7 @@
 					Number.isNaN(leadState.matchConfig.red3) ||
 					Number.isNaN(leadState.matchConfig.blue1) ||
 					Number.isNaN(leadState.matchConfig.blue2) ||
-					Number.isNaN(leadState.matchConfig.blue3)}>Start match with top six in queue</button
+					Number.isNaN(leadState.matchConfig.blue3)}>Start match with top six in queue</Button
 			>
 		</div>
 	{:else}
@@ -134,14 +134,14 @@
 				{/if}
 			{/each}
 			<div>
-				<button class="standard-button standard-button--danger" onclick={() => forceEndMatch()}
-					>Force end match (not all scouters have submitted results)</button
+				<Button danger onclick={() => forceEndMatch()}
+					>Force end match (not all scouters have submitted results)</Button
 				>
 			</div>
 		{:else}
 			<div>
-				<button class="standard-button" onclick={() => signalMatchEnded()}
-					>Signal match is ended and tell scouters to submit results</button
+				<Button danger onclick={() => signalMatchEnded()}
+					>Signal match is ended and tell scouters to submit results</Button
 				>
 			</div>
 		{/if}

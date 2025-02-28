@@ -4,6 +4,7 @@
 	import ReturnToHome from "./ReturnToHome.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
 	import MatchHeader from "./MatchHeader.svelte";
+	import Button from "../../components/Button.svelte";
 </script>
 
 <div class="header">
@@ -32,7 +33,9 @@
 
 <div class="footer">
 	<div class="footer--middle">
-		<button class="standard-button footer__button" onclick={() => (appState.matchState = "teleop")}>Previous (Teleop)</button>
-		<button class="standard-button footer__button" onclick={() => (appState.matchState = "postmatch")} disabled={matchData.endgame.barge == null}> Next (Postmatch) </button>
+		<Button footer onclick={() => (appState.matchState = "teleop")}>Previous (Teleop)</Button>
+		<Button footer onclick={() => (appState.matchState = "postmatch")} disabled={matchData.endgame.barge == null}>
+			Next (Postmatch)
+		</Button>
 	</div>
 </div>

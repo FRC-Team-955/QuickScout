@@ -4,6 +4,7 @@
 	import ReturnToHome from "./ReturnToHome.svelte";
 	import textlogo from "../../assets/text-logo-removebg.png";
 	import MatchHeader from "./MatchHeader.svelte";
+	import Button from "../../components/Button.svelte";
 </script>
 
 <div class="header">
@@ -21,7 +22,7 @@
 
 <div class="footer">
 	<div class="footer--middle">
-		<button class="standard-button footer__button" onclick={() => (appState.matchState = "autonomous")}>Previous (Autonomous)</button>
-		<button class="standard-button footer__button" onclick={() => (appState.matchState = "endgame")}>Next (Endgame)</button>
+		<Button footer onclick={() => (appState.matchState = "autonomous")}>Previous (Autonomous)</Button>
+		<Button footer onclick={() => (appState.matchState = "endgame")}>Next (Endgame)</Button>
 	</div>
 </div>
