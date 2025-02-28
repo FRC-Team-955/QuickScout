@@ -89,7 +89,7 @@ body {
 
 .header {
 	background-color: #ffffff;
-	height: 10%;
+	height: 10vh;
 	width: 100%;
 	position: fixed;
 	top: 0;
@@ -133,7 +133,7 @@ body {
 
 .footer {
 	background-color: #ffffff;
-	height: 15%;
+	height: 15vh;
 	width: 100%;
 	position: fixed;
 	bottom: 0;
@@ -165,10 +165,9 @@ body {
 .contents {
 	margin-top: 25px;
 	margin-bottom: 25px;
-	padding-bottom: 125px;
+	padding-bottom: 20vh;
 	position: relative;
-	top: 100px;
-	bottom: 100px;
+	top: 10vh;
 	display: block;
 	place-items: center;
 	text-align: center;
