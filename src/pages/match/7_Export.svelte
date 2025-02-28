@@ -25,6 +25,7 @@
 
 	const allValues = [
 		// ensure order
+		"objective",
 		scouterInfo.scouterID,
 		...objectValuesDeep(matchData.metadata),
 		...objectValuesDeep(matchData.prematch),
