@@ -7,7 +7,7 @@ import { auth, db } from "./firebase";
 let tryingToSignIn = false;
 let updateInterval = null;
 export async function tryToSignIn() {
-	if (scouterInfo.scouterID.length > 2 && !tryingToSignIn) {
+	if (scouterInfo.scouterID.length > 2 && !tryingToSignIn && !serverState.signedIn) {
 		tryingToSignIn = true;
 		console.log("trying to sign in");
 		await signOut(auth);
@@ -119,7 +119,13 @@ export function startMatch() {
 	)
 		return;
 
-	const idsForMatch = Object.keys(queuingState.queue).slice(0, 6);
+	const idsForMatch = Object.entries(queuingState.queue)
+		// Sort by number (value)
+		.sort((a, b) => a[1] - b[1])
+		// Map to ID (key)
+		.map((val) => val[0])
+		// Get top six people
+		.slice(0, 6);
 	queuingState.match.matchNumber = leadState.matchConfig.matchNumber;
 
 	queuingState.match.teamAllianceColors = {};

@@ -24,4 +24,6 @@
 	{:else}
 		<Scouter />
 	{/if}
+
+	<p>Version info: 2</p>
 </div>
