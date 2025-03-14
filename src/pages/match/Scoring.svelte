@@ -22,6 +22,14 @@
 		}
 	}
 
+	function foul() {
+		if (isAutonomous) return;
+		matchData.teleop.fouls++;
+		actionUndos.push(() => {
+			matchData.teleop.fouls--;
+		});
+	}
+
 	function coralPreload() {
 		(isAutonomous ? matchData.autonomous : matchData.teleop).coral.preloaded = true;
 		scoringState.hasCoral = true;
@@ -179,6 +187,11 @@
 		>Undo last action</Button
 	>
 </div>
+{#if !isAutonomous}
+	<div>
+		<Button onclick={foul}>Foul ({matchData.teleop.fouls} fouls)</Button>
+	</div>
+{/if}
 <div class="scoring-grid full-height">
 	{#if !scoringState.hasCoral}
 		<div>

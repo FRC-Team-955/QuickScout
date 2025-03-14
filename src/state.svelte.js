@@ -66,6 +66,7 @@ const defaultMatchData = {
 		},
 	},
 	teleop: {
+		fouls: 0,
 		coral: {
 			stationPickup: 0,
 			groundIntake: 0,
