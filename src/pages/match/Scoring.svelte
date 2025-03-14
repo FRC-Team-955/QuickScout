@@ -195,30 +195,34 @@
 		<div></div>
 		<div></div>
 	{:else}
-		<div><Button extraClasses="scoring-grid__button" onclick={coralL4}>Scored L4</Button></div>
-		<div><Button extraClasses="scoring-grid__button" onclick={coralL3}>Scored L3</Button></div>
-		<div><Button extraClasses="scoring-grid__button" onclick={coralL2}>Scored L2</Button></div>
-		<div><Button extraClasses="scoring-grid__button" onclick={coralL1}>Scored L1 (Trough)</Button></div>
-		<div><Button extraClasses="scoring-grid__button" onclick={coralDropped}>Dropped</Button></div>
+		<div><Button extraClasses="scoring-grid__button" onclick={coralL4}>Coral scored L4</Button></div>
+		<div><Button extraClasses="scoring-grid__button" onclick={coralL3}>Coral scored L3</Button></div>
+		<div><Button extraClasses="scoring-grid__button" onclick={coralL2}>Coral scored L2</Button></div>
+		<div><Button extraClasses="scoring-grid__button" onclick={coralL1}>Coral scored L1 (Trough)</Button></div>
+		<div><Button extraClasses="scoring-grid__button" onclick={coralDropped}>Coral dropped</Button></div>
 	{/if}
 	{#if !scoringState.hasAlgae}
 		<div>
-			<Button extraClasses="scoring-grid__button" onclick={algaeReefDrop}>Descored from reef and dropped</Button>
+			<Button extraClasses="scoring-grid__button" onclick={algaeReefDrop}
+				>Algae descored from reef and dropped</Button
+			>
 		</div>
 		<div>
-			<Button extraClasses="scoring-grid__button" onclick={algaeReefTake}>Descored from reef and taken</Button>
+			<Button extraClasses="scoring-grid__button" onclick={algaeReefTake}
+				>Algae descored from reef and taken</Button
+			>
 		</div>
 		<div>
-			<Button extraClasses="scoring-grid__button" onclick={algaeGroundIntake}>Taken from ground</Button>
+			<Button extraClasses="scoring-grid__button" onclick={algaeGroundIntake}>Algae taken from ground</Button>
 		</div>
 		<div></div>
 		<div></div>
 	{:else}
 		<div>
-			<Button extraClasses="scoring-grid__button" onclick={algaeProcessor}>Scored in processor</Button>
+			<Button extraClasses="scoring-grid__button" onclick={algaeProcessor}>Algae scored in processor</Button>
 		</div>
-		<div><Button extraClasses="scoring-grid__button" onclick={algaeNet}>Scored in net</Button></div>
-		<div><Button extraClasses="scoring-grid__button" onclick={algaeDropped}>Dropped</Button></div>
+		<div><Button extraClasses="scoring-grid__button" onclick={algaeNet}>Algae scored in net</Button></div>
+		<div><Button extraClasses="scoring-grid__button" onclick={algaeDropped}>Algae dropped</Button></div>
 		<div></div>
 		<div></div>
 	{/if}
