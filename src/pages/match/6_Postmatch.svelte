@@ -22,6 +22,11 @@
 	<br />
 	<Checkbox bind:value={matchData.postmatch.card}>Yellow/red card?</Checkbox>
 	<br />
+
+	<br />
+	<p>Comments</p>
+	<textarea class="input" bind:value={matchData.postmatch.comments} placeholder="None"></textarea>
+	<br />
 </div>
 
 <div class="footer">

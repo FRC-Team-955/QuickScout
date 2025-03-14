@@ -92,6 +92,7 @@ const defaultMatchData = {
 		dead: false,
 		tippedOver: false,
 		card: false,
+		comments: "",
 	},
 };
 
