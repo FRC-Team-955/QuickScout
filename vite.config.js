@@ -3,8 +3,9 @@ import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { VitePWA } from "vite-plugin-pwa";
 import { execSync } from "child_process";
 
-const commitHash = execSync("git rev-parse --short HEAD").toString().trim();
-const commitNumber = execSync("git rev-list --count HEAD").toString().trim();
+const branch = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF.replace("refs/heads/", "") || "main";
+const commitHash = execSync(`git rev-parse --short ${branch}`).toString().trim();
+const commitNumber = execSync(`git rev-list --count ${branch}`).toString().trim();
 
 // https://vite.dev/config/
 export default defineConfig({
