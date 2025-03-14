@@ -1,9 +1,17 @@
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { VitePWA } from "vite-plugin-pwa";
+import { execSync } from "child_process";
+
+const commitHash = execSync("git rev-parse --short HEAD").toString().trim();
+const commitNumber = execSync("git rev-list --count HEAD").toString().trim();
 
 // https://vite.dev/config/
 export default defineConfig({
+	define: {
+		__COMMIT_HASH__: JSON.stringify(commitHash),
+		__COMMIT_NUMBER__: JSON.stringify(commitNumber),
+	},
 	base: "./",
 	build: {
 		outDir: "dist",

@@ -6,6 +6,11 @@
 
 	import textlogo from "../../assets/text-logo-removebg.png";
 	import Button from "../../components/Button.svelte";
+
+	// @ts-ignore
+	const commitHash = window.__COMMIT_HASH__ || "Unknown";
+	// @ts-ignore
+	const commitNumber = window.__COMMIT_NUMBER__ || "Unknown";
 </script>
 
 <div class="header">
@@ -14,6 +19,8 @@
 
 <div class="contents">
 	<h3>Made by FRC Teams 749, 955, 997</h3>
+
+	<p>Version info: {commitNumber} ({commitHash})</p>
 
 	<Button onclick={() => (appState.homeState = "setup")}>Setup</Button>
 
@@ -24,6 +31,4 @@
 	{:else}
 		<Scouter />
 	{/if}
-
-	<p>Version info: 2</p>
 </div>
