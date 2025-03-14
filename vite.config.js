@@ -5,9 +5,8 @@ import { execSync } from "child_process";
 
 const branch = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF.replace("refs/heads/", "") || "main";
 console.log(`Branch: ${branch}`);
-const commitHash = execSync(`git rev-parse --short main`).toString().trim();
-const commitNumber = execSync(`git rev-list --count main`).toString().trim();
-console.log(execSync("git rev-list main").toString());
+const commitHash = execSync(`git rev-parse --short ${branch}`).toString().trim();
+const commitNumber = execSync(`git rev-list --count ${branch}`).toString().trim();
 
 // https://vite.dev/config/
 export default defineConfig({
