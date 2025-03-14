@@ -16,6 +16,19 @@
 	<MatchHeader />
 
 	<h2 class="subheader subheader--underline subheader--underline--green">Postmatch</h2>
+
+	<br />
+	<label>
+		Defense rating:
+		<select class="input" bind:value={matchData.postmatch.defenseRating}>
+			<option value="noDefense">No defense played</option>
+			<option value="largeImpact">Large impact on opposing alliance</option>
+			<option value="mediumImpact">Medium impact on opposing alliance</option>
+			<option value="smallImpact">Small impact on opposing alliance</option>
+		</select>
+	</label>
+	<br />
+
 	<Checkbox bind:value={matchData.postmatch.dead}>Dead?</Checkbox>
 	<br />
 	<Checkbox bind:value={matchData.postmatch.tippedOver}>Tipped Over?</Checkbox>
@@ -36,6 +49,10 @@
 		{:else}
 			<Button footer onclick={() => (appState.matchState = "prematch")}>Previous (Prematch)</Button>
 		{/if}
-		<Button footer onclick={() => (appState.matchState = "export")}>Finish and Export</Button>
+		<Button
+			footer
+			onclick={() => (appState.matchState = "export")}
+			disabled={matchData.postmatch.defenseRating == null}>Finish and Export</Button
+		>
 	</div>
 </div>

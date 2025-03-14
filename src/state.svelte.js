@@ -92,6 +92,8 @@ const defaultMatchData = {
 		dead: false,
 		tippedOver: false,
 		card: false,
+		/** @type {"noDefense" | "largeImpact" | "mediumImpact" | "smallImpact" | null} */
+		defenseRating: null,
 		comments: "",
 	},
 };
