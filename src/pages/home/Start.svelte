@@ -8,9 +8,9 @@
 	import Button from "../../components/Button.svelte";
 
 	// @ts-ignore
-	const commitHash = window.__COMMIT_HASH__ || "Unknown";
+	const commitHash = __COMMIT_HASH__ || "Unknown";
 	// @ts-ignore
-	const commitNumber = window.__COMMIT_NUMBER__ || "Unknown";
+	const commitNumber = __COMMIT_NUMBER__ || "Unknown";
 </script>
 
 <div class="header">
