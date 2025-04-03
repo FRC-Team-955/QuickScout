@@ -71,9 +71,10 @@
 <br />
 
 {#snippet scouter(id)}
-	{leadState.scouterIDMapping[id] || "Unknown"} (ID: {id})
 	{#if !(id in queuingState.connected) || !queuingState.connected[id]}
-		<strong style="color: red">NOT CONNECTED</strong>
+		<strong style="color: red">{leadState.scouterIDMapping[id] || "Unknown"} (ID: {id})</strong>
+	{:else}
+		{leadState.scouterIDMapping[id] || "Unknown"} (ID: {id})
 	{/if}
 {/snippet}
 
